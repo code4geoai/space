@@ -1,0 +1,8 @@
+apollo11: https://www.nasa.gov/wp-content/uploads/static/history/alsj/a11/AS11-40-5927.jpg
+rover: https://apod.nasa.gov/apod/image/9907/rover17_apollo17_big.jpg
+reflector: https://photojournal.jpl.nasa.gov/jpeg/PIA13037.jpg
+opportunity: https://photojournal.jpl.nasa.gov/jpeg/PIA15114.jpg
+ingenuity: https://photojournal.jpl.nasa.gov/jpeg/PIA25881.jpg
+debris: https://photojournal.jpl.nasa.gov/jpeg/PIA25219.jpg
+
+Photojournal image IDs: Apollo laser reflector PIA13037; Opportunity PIA15114; Ingenuity PIA25881; debris PIA25219. Credits shown in website. Verify all image URLs online before public presentation.
