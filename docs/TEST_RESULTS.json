@@ -1,0 +1,82 @@
+{
+  "date": "2026-11-04T18:02:54.561Z",
+  "browser": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+  "results": [
+    {
+      "name": "en phone: RTL, typography, images, keyboard and narration",
+      "status": "PASS"
+    },
+    {
+      "name": "en tablet: RTL, typography, images, keyboard and narration",
+      "status": "PASS"
+    },
+    {
+      "name": "en desktop: RTL, typography, images, keyboard and narration",
+      "status": "PASS"
+    },
+    {
+      "name": "ur phone: RTL, typography, images, keyboard and narration",
+      "status": "PASS"
+    },
+    {
+      "name": "ur tablet: RTL, typography, images, keyboard and narration",
+      "status": "PASS"
+    },
+    {
+      "name": "ur desktop: RTL, typography, images, keyboard and narration",
+      "status": "PASS"
+    },
+    {
+      "name": "ps phone: RTL, typography, images, keyboard and narration",
+      "status": "PASS"
+    },
+    {
+      "name": "ps tablet: RTL, typography, images, keyboard and narration",
+      "status": "PASS"
+    },
+    {
+      "name": "ps desktop: RTL, typography, images, keyboard and narration",
+      "status": "PASS"
+    },
+    {
+      "name": "ar phone: RTL, typography, images, keyboard and narration",
+      "status": "PASS"
+    },
+    {
+      "name": "ar tablet: RTL, typography, images, keyboard and narration",
+      "status": "PASS"
+    },
+    {
+      "name": "ar desktop: RTL, typography, images, keyboard and narration",
+      "status": "PASS"
+    },
+    {
+      "name": "French, Spanish and Chinese: complete exhibit content and loaded local Chinese font",
+      "status": "PASS"
+    },
+    {
+      "name": "MP3 pipeline: real media clock, cue changes, speed, seek, pause and language cancellation",
+      "status": "PASS"
+    },
+    {
+      "name": "Missing translation: visibly English source and matching language metadata",
+      "status": "PASS"
+    },
+    {
+      "name": "Service worker: all assets cached, four-language offline reload, gallery and quiz",
+      "status": "PASS"
+    },
+    {
+      "name": "Fullscreen classroom mode and Escape",
+      "status": "PASS"
+    },
+    {
+      "name": "Repository subpath: application resources and service worker stay under scope",
+      "status": "PASS"
+    },
+    {
+      "name": "320px screens: RTL at enlarged text size",
+      "status": "PASS"
+    }
+  ]
+}

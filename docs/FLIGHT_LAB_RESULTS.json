@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Seven-language flight facts, proportional density bars and mobile RTL",
+    "status": "PASS"
+  },
+  {
+    "name": "Opt-in video starts at 1:55, has no autoplay, and stops overlapping narration",
+    "status": "PASS"
+  },
+  {
+    "name": "Flight facts and expanded story work offline; YouTube is clearly online-only",
+    "status": "PASS"
+  }
+]

@@ -1,0 +1,6 @@
+tools/
+node_modules/
+test-results/
+dist/
+*.zip
+.preview/

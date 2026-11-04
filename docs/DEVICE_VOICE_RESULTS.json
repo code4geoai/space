@@ -1,0 +1,67 @@
+{
+  "results": [
+    {
+      "name": "Auto narration waits for delayed voices, resumes engine and starts on Play",
+      "status": "PASS"
+    },
+    {
+      "name": "Voice discovery stops cleanly when cancelled before voices arrive",
+      "status": "PASS"
+    },
+    {
+      "name": "All seven story languages use matching device voices and cancel on language change",
+      "status": "PASS"
+    },
+    {
+      "name": "Unavailable language and Cantonese voice never substitute for Urdu or Simplified Chinese",
+      "status": "PASS"
+    },
+    {
+      "name": "Scene narration survives pause/end race, tracks progress and ignores cancelled utterances",
+      "status": "PASS"
+    },
+    {
+      "name": "A silent speech-engine failure gives a retry message instead of claiming playback",
+      "status": "PASS"
+    },
+    {
+      "name": "Auto narration prefers student recording and falls back to matching device voice on missing MP3",
+      "status": "PASS"
+    }
+  ],
+  "nativeEngine": {
+    "voices": [
+      {
+        "name": "Microsoft David - English (United States)",
+        "lang": "en-US",
+        "localService": true
+      },
+      {
+        "name": "Microsoft Mark - English (United States)",
+        "lang": "en-US",
+        "localService": true
+      },
+      {
+        "name": "Microsoft Zira - English (United States)",
+        "lang": "en-US",
+        "localService": true
+      }
+    ],
+    "status": "Matching device voice · scene-by-scene narration",
+    "playing": true,
+    "events": [
+      {
+        "type": "start",
+        "text": "I am Ingenuity."
+      },
+      {
+        "type": "end",
+        "text": "I am Ingenuity."
+      },
+      {
+        "type": "start",
+        "text": " I arrived on Mars with Perseverance, a small machine carrying a big question: could I fly here?"
+      }
+    ]
+  }
+}

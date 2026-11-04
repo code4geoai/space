@@ -1,0 +1,38 @@
+# V5 test report
+
+**Date:** 4 November 2026 (Pakistan). **Result:** static checks passed; **19/19 main browser scenarios and 7/7 device-voice scenarios passed**. Browser: installed Google Chrome on Windows, automated with Playwright 1.64.1. Machine-readable results: [TEST_RESULTS.json](TEST_RESULTS.json) and [DEVICE_VOICE_RESULTS.json](DEVICE_VOICE_RESULTS.json).
+
+**Flight-lab update:** Three additional browser scenarios passed: all seven translations and mobile RTL with proportional air-density bars; opt-in video at 1:55 with no autoplay and no overlapping local narration; and offline facts/story availability with an explicit online-only video message. Embed behaviour was tested with an intercepted test frame, not a claim that YouTube playback was watched or that the 1:55 segment was transcribed. See [FLIGHT_LAB_RESULTS.json](FLIGHT_LAB_RESULTS.json). Recording-script consistency checks include the new thin-air explanation in English, Urdu and Pashto.
+
+| Coverage | Result |
+|---|---|
+| English, Urdu, Pashto, Arabic × 390×844 phone, 820×1180 tablet, 1440×1000 desktop | 12 scenarios passed: correct document language/direction, bundled font actually loaded, title/intro do not overlap, no horizontal overflow, card photos load, keyboard entry, recording-needed state, no automatic playback. |
+| French, Spanish, Simplified Chinese | All six exhibit texts and localized cinematic subtitles present; draft notices present; local Chinese font loads. |
+| Narration pipeline | Temporary **test-only PCM audio response**, never shipped as student audio, verifies media-clock scene changes, pause/resume, speed, seek, completion and language cancellation. |
+| Default device narration until recording | Auto mode chooses an available student MP3; otherwise it uses a matching device voice. Waits for late voice discovery, cancels pending speech, handles pause/end races, reports silent engine failures, and falls back from a missing declared MP3 to a matching voice. All seven language mappings tested with explicit test doubles. |
+| Real Windows speech engine | In normal Windows permissions, actual Microsoft David English speech emitted start, sentence completion, and next-sentence start events. Microsoft David/Mark/Zira English voices are installed; no Urdu, Pashto or Arabic voice is exposed on this PC. Physical loudspeaker quality was not manually assessed. |
+| Missing translation and voice fallback | Visible English-source notice, `lang=en`, correct source MP3 path. English-only device voices cannot speak Urdu/Pashto/Arabic stories. A missing story translation blocks audio until the visitor selects its source language. |
+| Offline museum | Complete cache readiness, then browser network disabled: reload in English/Urdu/Pashto/Arabic; local fonts/images, cinematic scenes, full-frame gallery and quizzes work. |
+| Classroom presentation | Fullscreen entry and exit work in automated Chrome. |
+| GitHub Pages subpath | Actual `/museum/` HTTP server: scoped service worker, complete cache, offline reload and local photograph loading pass. |
+| Very small screens | Urdu, Pashto and Arabic at 320 px and 120% root text size: no horizontal overflow or title/intro overlap. |
+
+Every main viewport scenario also exercises Moon/Mars filtering, quiz feedback, silent timeline pause/resume, scene navigation and gallery keyboard Escape/focus return. The first Tab reaches the skip link; Enter moves focus to the collection. Opening an exhibit focuses its heading region without starting audio.
+
+Static checks cover JavaScript syntax, all seven locale/content records, all nine local JPEG signatures and NASA provenance metadata, local font files/licenses, recording-script consistency and MP3 manifest validity. No recording is declared available. Installation audit after updating Playwright reported zero vulnerabilities.
+
+The completion audit also verifies all seven recording directories, every CSS font URL, and SHA-256 checksums for the thirteen image/font assets in `ASSET_INVENTORY.json`. Git folder markers are excluded from offline downloads and deployment files; the ZIP preserves the empty recording folders. `Start-Museum.cmd` provides a local Windows launch shortcut in the project source.
+
+The final `dist/` package also passed `node tests/smoke-dist.mjs`: actual repository-subpath hosting, offline Urdu story, local fonts and photographs, and every handoff document loaded from the generated distribution. A deployable ZIP is supplied separately from the source and testing tools.
+
+Visual review inspected the English and Urdu screenshots and the Apollo 11 lander, Apollo 17 rover and retroreflector files. Full-page and hero screenshots for all twelve primary combinations are generated under `test-results/` by `npm test` (ignored build artifacts).
+
+The V4 blue-and-orange theme has been restored, including rounded panels and controls, bolder headings and larger collection/control text. The browser suite was rerun after the theme restoration to check responsive layout and RTL typography.
+
+The supplied V4 file was also compared directly: the warm illustrated Mars hero and V4 panel colours are restored, including browser theme metadata and the orange site icon. `node tests/theme-update.mjs` passed an additional regression check: it installs a deliberately green cached version, updates the service worker, verifies automatic replacement by the blue/orange theme, then verifies the correct theme after an offline reload.
+
+An earlier repeated test exposed a final audio `timeupdate` event arriving after Pause. The player now snapshots the paused media time and ignores late updates until playback resumes; the final suite passes. No tests were relaxed to hide the issue.
+
+Device voice previously defaulted to silent mode and read the available voice list only once. The corrected player primes discovery on load and uses the browser’s [voiceschanged event](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/voiceschanged_event) with a bounded wait on Play. It resumes a suspended speech engine, keeps each utterance alive, narrates in sentence chunks, and advances the scene only with narration. A five-second startup check prevents a silent engine failure from remaining labeled as playing. Device-voice tests simulate missing/delayed voices; the separate native-engine result records actual Windows speech events. The restricted execution environment could list voices but could not start the OS engine; the normal-permissions verification succeeded.
+
+**Boundaries:** Viewports are browser emulations, not physical-device testing. Safari, Firefox, mobile OS audio/fullscreen restrictions, real microphone hardware and final MP3 speech quality have not been manually tested. No MP3 recordings exist yet. Linguistic accuracy is not certified by layout tests: all non-English text still needs fluent-speaker review. NASA source links require internet; the museum itself passes offline tests. GitHub Pages deployment is prepared in the repository workflow but has not been published by this task.

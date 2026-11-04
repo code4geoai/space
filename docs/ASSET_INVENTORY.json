@@ -1,0 +1,144 @@
+{
+  "photographs": 9,
+  "fontFamilies": 4,
+  "cinematicScenes": [
+    "ingenuity",
+    "first-flight",
+    "aerial",
+    "debris",
+    "final"
+  ],
+  "assets": [
+    {
+      "kind": "photograph",
+      "key": "apollo11",
+      "file": "assets/images/apollo11.jpg",
+      "bytes": 285486,
+      "sha256": "548a744bbbfdb53e81c1decfcd1e26847267618767c35199fb4405f3cf224191",
+      "archiveId": "AS11-40-5927",
+      "credit": "NASA",
+      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5927&mission=AS11&roll=40",
+      "caption": "Eagle before ascent, July 1969. The gold-covered lower portion is the descent stage that stayed on the Moon; the complete lander is shown."
+    },
+    {
+      "kind": "photograph",
+      "key": "rover",
+      "file": "assets/images/rover.jpg",
+      "bytes": 233278,
+      "sha256": "c0ba34df8f86c89232af50f095ee3fac0b7b0a80e87c0375bef6c29d75c70219",
+      "archiveId": "AS17-147-22527",
+      "credit": "NASA/Harrison Schmitt",
+      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=22527&mission=AS17&roll=147",
+      "caption": "Eugene Cernan test-drives the Apollo 17 lunar rover beside the lunar module, December 1972."
+    },
+    {
+      "kind": "photograph",
+      "key": "reflector",
+      "file": "assets/images/reflector.jpg",
+      "bytes": 444188,
+      "sha256": "c5ff0736fc675aedcbeb500ad0da3b26a7c2d7952b99cc15ab22c3a3bdec9021",
+      "archiveId": "AS11-40-5952",
+      "credit": "NASA/Neil Armstrong",
+      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5952&mission=AS11&roll=40",
+      "caption": "Apollo 11 laser ranging retroreflector deployed on the lunar surface, July 1969."
+    },
+    {
+      "kind": "photograph",
+      "key": "opportunity",
+      "file": "assets/images/opportunity.jpg",
+      "bytes": 100805,
+      "sha256": "da538a3daa85bc09b6569907978c0d3a08ea9c559e2e1f8e1317d868f3f641ab",
+      "archiveId": "PIA22222",
+      "credit": "NASA/JPL-Caltech",
+      "source": "https://www.jpl.nasa.gov/images/pia22222-opportunitys-first-selfie/",
+      "caption": "Opportunity’s first selfie, assembled from Microscopic Imager frames on sols 5000 and 5006 in 2018. The camera was designed for close-up rocks, so the rover is out of focus. Photographic mosaic."
+    },
+    {
+      "kind": "photograph",
+      "key": "ingenuity",
+      "file": "assets/images/ingenuity.jpg",
+      "bytes": 343622,
+      "sha256": "9204111dc493f4366a3b37935e8b1e0eff2438bd28bf21b4b32000a479f2482d",
+      "archiveId": "PIA25881",
+      "credit": "NASA/JPL-Caltech/ASU/MSSS",
+      "source": "https://science.nasa.gov/photojournal/ingenuity-at-two-years-on-mars/",
+      "caption": "Ingenuity on Mars, April 16, 2023, photographed by Perseverance’s Mastcam-Z. Enhanced color photograph, not an illustration."
+    },
+    {
+      "kind": "photograph",
+      "key": "first-flight",
+      "file": "assets/images/first-flight.jpg",
+      "bytes": 108534,
+      "sha256": "97c67e109104f89d9d4b1b72b6780639eeffaa1d9388e0d3ec5428735d3eb947",
+      "archiveId": "PIA24584",
+      "credit": "NASA/JPL-Caltech",
+      "source": "https://science.nasa.gov/resource/ingenuitys-first-black-and-white-image-from-the-air/",
+      "caption": "Ingenuity’s navigation camera sees its own shadow during the first flight on April 19, 2021. Black-and-white photograph."
+    },
+    {
+      "kind": "photograph",
+      "key": "aerial",
+      "file": "assets/images/aerial.jpg",
+      "bytes": 271752,
+      "sha256": "05c62550055105cea92fd6ae7a5693f28dd10d36f7c692b5ef5138e350afcb69",
+      "archiveId": "PIA24593",
+      "credit": "NASA/JPL-Caltech",
+      "source": "https://science.nasa.gov/photojournal/first-aerial-color-image-of-mars/",
+      "caption": "First aerial color photograph from Ingenuity, taken during its second flight on April 22, 2021. Landing-gear shadows appear near the edge."
+    },
+    {
+      "kind": "photograph",
+      "key": "debris",
+      "file": "assets/images/debris.jpg",
+      "bytes": 350584,
+      "sha256": "32dc9f4f1853d641dfefe6292049aad858d5e3f7af579fd3fba193ca8fa3dcc9",
+      "archiveId": "PIA25219",
+      "credit": "NASA/JPL-Caltech",
+      "source": "https://science.nasa.gov/resource/rovers-backshell-seen-from-the-air/",
+      "caption": "Perseverance’s backshell and parachute photographed by Ingenuity on flight 26, April 19, 2022. This is discarded landing hardware, not a crashed rover."
+    },
+    {
+      "kind": "photograph",
+      "key": "final",
+      "file": "assets/images/final.jpg",
+      "bytes": 75365,
+      "sha256": "492d19d0ba5745c21a83b664b95383eaf047169a149826a9e04357f74f67cacf",
+      "archiveId": "PIA26238",
+      "credit": "NASA/JPL-Caltech/LANL/CNES/CNRS",
+      "source": "https://science.nasa.gov/resource/supercams-rmi-spots-ingenuitys-broken-rotor/",
+      "caption": "SuperCam RMI photographic mosaic from February 24, 2024. Ingenuity at its final resting site, right; a detached rotor blade, left. The small helicopter appears in a wide landscape."
+    },
+    {
+      "kind": "font",
+      "file": "assets/fonts/Inter.ttf",
+      "bytes": 876576,
+      "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+      "license": "assets/fonts/Inter-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/Inter%5Bopsz,wght%5D.ttf"
+    },
+    {
+      "kind": "font",
+      "file": "assets/fonts/NotoNastaliqUrdu.ttf",
+      "bytes": 690304,
+      "sha256": "98a4787f34eb6fde57fb9a1121a8f216301196ab0da98ea110cad581be8abbcd",
+      "license": "assets/fonts/Nastaliq-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/notonastaliqurdu/NotoNastaliqUrdu%5Bwght%5D.ttf"
+    },
+    {
+      "kind": "font",
+      "file": "assets/fonts/NotoNaskhArabic.ttf",
+      "bytes": 307592,
+      "sha256": "67b5a525a661b607971fbd3f96a81b89d3a768e74534fca84f18ac97e6fab72f",
+      "license": "assets/fonts/Naskh-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/notonaskharabic/NotoNaskhArabic%5Bwght%5D.ttf"
+    },
+    {
+      "kind": "font",
+      "file": "assets/fonts/NotoSansSC.ttf",
+      "bytes": 17772300,
+      "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+      "license": "assets/fonts/Chinese-OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssc/NotoSansSC%5Bwght%5D.ttf"
+    }
+  ]
+}

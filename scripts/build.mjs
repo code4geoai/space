@@ -1,0 +1,12 @@
+import {cp,mkdir,writeFile,rm} from 'node:fs/promises';
+import path from 'node:path';
+await import('./prepare.mjs');
+await import('./cache.mjs');
+const files=['index.html','styles.css','app.js','sw.js','data','assets','audio','docs','README.md'];
+const output=path.resolve('dist');
+if(path.dirname(output)!==process.cwd()||path.basename(output)!=='dist')throw Error('Unexpected build path');
+await rm(output,{recursive:true,force:true});
+await mkdir('dist',{recursive:true});
+for(const file of files)await cp(file,path.join('dist',file),{recursive:true,filter:source=>!source.endsWith('V4-baseline.html')&&!source.endsWith('.download')&&!source.endsWith('.gitkeep')});
+await writeFile('dist/.nojekyll','');
+console.log('Static GitHub Pages project built in dist/');
