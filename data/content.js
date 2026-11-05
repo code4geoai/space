@@ -66,3 +66,15 @@ window.INGENUITY_SCENES={
  'zh-CN':[['小小的开始','我是机智号。我和毅力号一起来到火星，小小的机器带着一个大问题：我能在这里飞起来吗？'],['第一次跃起','2021年4月19日，我飞离火星表面。相机拍到了我的影子：小小的形状，崭新的可能。'],['新的视角','从空中看，地面变得不同。想象一下，用全新的方式看待熟悉的世界，会有多么激动。 火星地表空气密度约为地球海平面空气密度的百分之一，因此很难产生足够的升力。'],['旅程的痕迹','后来，我拍下了帮助毅力号着陆的降落伞和背罩。即使丢弃的设备也能讲述工程的故事。'],['飞行之外的传承','我完成了七十二次飞行。最后一次飞行损坏了旋翼。如今我不能再飞，但请想象下一个受到我们启发的探险者。']]
 };
 window.QUIZ_FLIGHTS={en:'How many flights did Ingenuity complete?',ur:'انجینیوٹی نے کتنی پروازیں کیں؟',ps:'انجینیوټي څو الوتنې وکړې؟',ar:'كم رحلة أكملت إنجينيويتي؟',fr:'Combien de vols Ingenuity a-t-il accomplis ?',es:'¿Cuántos vuelos completó Ingenuity?','zh-CN':'机智号完成了多少次飞行？'};
+/* Story photographs follow the existing three-sentence narration. Supplemental
+   gallery images can show labelled mission context without implying that a
+   related instrument or a different camera view is the speaking artifact. */
+const artifactPhotoSets={
+ apollo11:{scenes:['apollo11','apollo11-footpad','apollo11-ladder'],gallery:['apollo11','apollo11-footpad','apollo11-engine','apollo11-ladder']},
+ rover:{scenes:['rover','rover-front','rover-fender'],gallery:['rover','rover-front','rover-fender','rover-wide']},
+ reflector:{scenes:['reflector-carry','reflector','reflector-context'],gallery:['reflector','reflector-carry','reflector-context','reflector-apollo15']},
+ opportunity:{scenes:['opportunity-panels','opportunity-shadow','opportunity-tracks'],gallery:['opportunity-panels','opportunity-shadow','opportunity-tracks','opportunity']},
+ debris:{scenes:['debris','debris-ground','debris-aerial'],gallery:['debris','debris-ground','debris-aerial','debris-heatshield']}
+};
+for(const artifact of ARTIFACTS){const photos=artifactPhotoSets[artifact.id];if(photos){artifact.scenePhotos=photos.scenes;artifact.galleryPhotos=photos.gallery}}
+ARTIFACTS.find(artifact=>artifact.id==='opportunity').photo='opportunity-panels';

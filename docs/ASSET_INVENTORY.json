@@ -1,5 +1,5 @@
 {
-  "photographs": 9,
+  "photographs": 24,
   "fontFamilies": 4,
   "cinematicScenes": [
     "ingenuity",
@@ -8,6 +8,89 @@
     "debris",
     "final"
   ],
+  "artifactCollections": {
+    "apollo11": {
+      "scenes": [
+        "apollo11",
+        "apollo11-footpad",
+        "apollo11-ladder"
+      ],
+      "gallery": [
+        "apollo11",
+        "apollo11-footpad",
+        "apollo11-engine",
+        "apollo11-ladder"
+      ]
+    },
+    "rover": {
+      "scenes": [
+        "rover",
+        "rover-front",
+        "rover-fender"
+      ],
+      "gallery": [
+        "rover",
+        "rover-front",
+        "rover-fender",
+        "rover-wide"
+      ]
+    },
+    "reflector": {
+      "scenes": [
+        "reflector-carry",
+        "reflector",
+        "reflector-context"
+      ],
+      "gallery": [
+        "reflector",
+        "reflector-carry",
+        "reflector-context",
+        "reflector-apollo15"
+      ]
+    },
+    "opportunity": {
+      "scenes": [
+        "opportunity-panels",
+        "opportunity-shadow",
+        "opportunity-tracks"
+      ],
+      "gallery": [
+        "opportunity-panels",
+        "opportunity-shadow",
+        "opportunity-tracks",
+        "opportunity"
+      ]
+    },
+    "ingenuity": {
+      "scenes": [
+        "ingenuity",
+        "first-flight",
+        "aerial",
+        "debris",
+        "final"
+      ],
+      "gallery": [
+        "ingenuity",
+        "first-flight",
+        "aerial",
+        "debris",
+        "final"
+      ]
+    },
+    "debris": {
+      "scenes": [
+        "debris",
+        "debris-ground",
+        "debris-aerial"
+      ],
+      "gallery": [
+        "debris",
+        "debris-ground",
+        "debris-aerial",
+        "debris-heatshield"
+      ]
+    }
+  },
   "assets": [
     {
       "kind": "photograph",
@@ -107,6 +190,171 @@
       "credit": "NASA/JPL-Caltech/LANL/CNES/CNRS",
       "source": "https://science.nasa.gov/resource/supercams-rmi-spots-ingenuitys-broken-rotor/",
       "caption": "SuperCam RMI photographic mosaic from February 24, 2024. Ingenuity at its final resting site, right; a detached rotor blade, left. The small helicopter appears in a wide landscape."
+    },
+    {
+      "kind": "photograph",
+      "key": "apollo11-footpad",
+      "file": "assets/images/apollo11-footpad.jpg",
+      "bytes": 377691,
+      "sha256": "3ff5d2e735163f6b32b3ff35aa7a902f6a51b82b9d1a347617f9d66879219e02",
+      "archiveId": "AS11-40-5917",
+      "credit": "NASA/Buzz Aldrin",
+      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5917&mission=AS11&roll=40",
+      "caption": "Apollo 11 lunar-module footpad and contact probe on the lunar surface, July 1969. A close view of hardware belonging to Eagle’s descent stage."
+    },
+    {
+      "kind": "photograph",
+      "key": "apollo11-engine",
+      "file": "assets/images/apollo11-engine.jpg",
+      "bytes": 319576,
+      "sha256": "b43739d9d8072ed4ff9400f4082f793be63d15eebb5aed8b8aa66d33a75f5fb4",
+      "archiveId": "AS11-40-5921",
+      "credit": "NASA/Buzz Aldrin",
+      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5921&mission=AS11&roll=40",
+      "caption": "Lunar surface beneath Eagle’s descent-engine area, photographed during the Apollo 11 lunar-module inspection. Ground and spacecraft context, not an image taken after ascent."
+    },
+    {
+      "kind": "photograph",
+      "key": "apollo11-ladder",
+      "file": "assets/images/apollo11-ladder.jpg",
+      "bytes": 258447,
+      "sha256": "b8ab1e46c724f5783add32becf6f534c7adc37a0e6427d2e100cefb6a6faf994",
+      "archiveId": "AS11-40-5869",
+      "credit": "NASA/Neil Armstrong",
+      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5869&mission=AS11&roll=40",
+      "caption": "Buzz Aldrin on Eagle’s footpad with the ladder above him, July 1969. The complete lunar module was still present; this is not a post-departure descent-stage photograph."
+    },
+    {
+      "kind": "photograph",
+      "key": "rover-front",
+      "file": "assets/images/rover-front.jpg",
+      "bytes": 308086,
+      "sha256": "862f3a623dedccd6951aaa26425da5c2e5a4c5866e93ea11f038e1fe8ea6ea4f",
+      "archiveId": "AS17-134-20389",
+      "credit": "NASA/Eugene Cernan",
+      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=20389&mission=AS17&roll=134",
+      "caption": "Front of the Apollo 17 lunar rover, showing its communications and television equipment and battery-cover area, December 1972."
+    },
+    {
+      "kind": "photograph",
+      "key": "rover-fender",
+      "file": "assets/images/rover-fender.jpg",
+      "bytes": 391606,
+      "sha256": "43fee67c1e36bee910cf734d867700f0a5fc6d69b9d619254e449e8f865af397",
+      "archiveId": "AS17-137-20979",
+      "credit": "NASA/Eugene Cernan",
+      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=20979&mission=AS17&roll=137",
+      "caption": "Apollo 17 rover fender repair using maps and clamps, documented at Station 2. A close-up of the actual lunar rover, December 1972."
+    },
+    {
+      "kind": "photograph",
+      "key": "rover-wide",
+      "file": "assets/images/rover-wide.jpg",
+      "bytes": 210926,
+      "sha256": "0b82d4a7a6c768d541acaf52a6e27bff5bb83e8b79970df7d69ff46868de667c",
+      "archiveId": "AS17-134-20435",
+      "credit": "NASA/Eugene Cernan",
+      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=20435&mission=AS17&roll=134",
+      "caption": "Wide Apollo 17 landing-site photograph with the lunar rover in the background and surface-experiment equipment in the foreground. Context view; the rover is small in this frame."
+    },
+    {
+      "kind": "photograph",
+      "key": "reflector-carry",
+      "file": "assets/images/reflector-carry.jpg",
+      "bytes": 321071,
+      "sha256": "f9022d19661aec3eec02a0f6cbd6e039cd353de45825a54121d8789037571a39",
+      "archiveId": "AS11-40-5942",
+      "credit": "NASA/Neil Armstrong",
+      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5942&mission=AS11&roll=40",
+      "caption": "Buzz Aldrin carries the laser retroreflector in his right hand and the passive seismometer in his left, during Apollo 11 experiment deployment in July 1969."
+    },
+    {
+      "kind": "photograph",
+      "key": "reflector-context",
+      "file": "assets/images/reflector-context.jpg",
+      "bytes": 366540,
+      "sha256": "3ce7c4602f6ea5fcd666b5b6d3e6dfbcc01517cb3e38161bfa86a97a3fb4d68c",
+      "archiveId": "AS11-40-5946",
+      "credit": "NASA/Neil Armstrong",
+      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5946&mission=AS11&roll=40",
+      "caption": "Apollo 11 experiment-deployment view: Aldrin works on the seismometer; the laser reflector is to his left. The instrument he is handling is the seismometer, not the reflector."
+    },
+    {
+      "kind": "photograph",
+      "key": "reflector-apollo15",
+      "file": "assets/images/reflector-apollo15.jpg",
+      "bytes": 426712,
+      "sha256": "555dda5c7fddf9afb79c0d7d88a5b360817f9c06871478210011840df803a7bb",
+      "archiveId": "AS15-85-11468",
+      "credit": "NASA/David Scott",
+      "source": "https://science.nasa.gov/photojournal/the-apollo-15-lunar-laser-ranging-retroreflector-a-fundamental-point-on-the-moon/",
+      "caption": "Related experiment: Apollo 15 laser retroreflector array photographed by David Scott in 1971. This is a different array from the Apollo 11 artifact described in the story."
+    },
+    {
+      "kind": "photograph",
+      "key": "opportunity-shadow",
+      "file": "assets/images/opportunity-shadow.jpg",
+      "bytes": 153805,
+      "sha256": "b73fcc47f85d12b44cbc0b40b3803ba073bbdfc64c947fa28d93ceaf60cfb232",
+      "archiveId": "PIA06739",
+      "credit": "NASA/JPL",
+      "source": "https://www.jpl.nasa.gov/images/pia06739-opportunity-catches-its-shadow-on-sol-180/",
+      "caption": "Opportunity’s shadow and foreground rover hardware, photographed by its front hazard camera inside Endurance Crater on July 26, 2004."
+    },
+    {
+      "kind": "photograph",
+      "key": "opportunity-panels",
+      "file": "assets/images/opportunity-panels.jpg",
+      "bytes": 352451,
+      "sha256": "ee81a8a2b942883a520f97b5d5188b645b6ed49bbf72864c556497a2391bf865",
+      "archiveId": "PIA18079",
+      "credit": "NASA/JPL-Caltech/Cornell Univ./Arizona State Univ.",
+      "source": "https://science.nasa.gov/photojournal/self-portrait-by-freshly-cleaned-opportunity-mars-rover-in-march-2014/",
+      "caption": "Opportunity’s cleaned solar arrays in a Pancam photographic mosaic from March 22–24, 2014. Approximately true color and vertical projection; the mast is absent from this assembled view."
+    },
+    {
+      "kind": "photograph",
+      "key": "opportunity-tracks",
+      "file": "assets/images/opportunity-tracks.jpg",
+      "bytes": 593240,
+      "sha256": "b5c0a8015be73220fab9cf94589195feee936a8d532424ed64d8b63aaeda4e96",
+      "archiveId": "PIA23246",
+      "credit": "NASA/JPL-Caltech",
+      "source": "https://science.nasa.gov/photojournal/opportunitys-tracks-in-perseverance-valley/",
+      "caption": "Opportunity’s wheel tracks in Perseverance Valley, assembled from Navcam photographs on sols 5000–5030. This is a terrain-and-tracks view; Perseverance Valley is a place name, not the Perseverance rover."
+    },
+    {
+      "kind": "photograph",
+      "key": "debris-aerial",
+      "file": "assets/images/debris-aerial.jpg",
+      "bytes": 535575,
+      "sha256": "17a1d4964938fd1ee6fc407380a785b8fc62a7845d16d763d32da992397a7984",
+      "archiveId": "PIA25217",
+      "credit": "NASA/JPL-Caltech",
+      "source": "https://www.jpl.nasa.gov/images/pia25217-rover-landing-gear-seen-from-the-air-by-mars-helicopter/",
+      "caption": "Discarded Perseverance backshell and parachute seen by Ingenuity during flight 26 on April 19, 2022. A separate aerial photograph of the landing hardware."
+    },
+    {
+      "kind": "photograph",
+      "key": "debris-ground",
+      "file": "assets/images/debris-ground.jpg",
+      "bytes": 396726,
+      "sha256": "ba03bfb70b66a7877f6196421b5079612eafa1928b3c76369362c66416d338c5",
+      "archiveId": "PIA25214",
+      "credit": "NASA/JPL-Caltech/ASU/MSSS",
+      "source": "https://science.nasa.gov/photojournal/perseverance-views-its-parachute/",
+      "caption": "Perseverance’s parachute photographed from the rover by Mastcam-Z on April 6, 2022, sol 401. Ground-level context rather than Ingenuity’s aerial view."
+    },
+    {
+      "kind": "photograph",
+      "key": "debris-heatshield",
+      "file": "assets/images/debris-heatshield.jpg",
+      "bytes": 127845,
+      "sha256": "6fc6c870c06a21f13cf9ba7cae74524f3b3505c9bae566be81ec2d8e0c168c15",
+      "archiveId": "PIA24337",
+      "credit": "NASA/JPL-Caltech/University of Arizona",
+      "source": "https://science.nasa.gov/photojournal/close-up-of-perseverance-heat-shield-on-the-martian-surface/",
+      "caption": "Perseverance’s discarded heat shield on Mars, seen by the Mars Reconnaissance Orbiter’s HiRISE camera on February 19, 2021. Processed orbital close-up, not a surface-camera photograph."
     },
     {
       "kind": "font",

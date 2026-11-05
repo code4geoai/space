@@ -34,13 +34,32 @@ The first-person stories are original **fictional personification**. Equipment d
 
 ## Ingenuity flight lab and linked video
 
-- **Air density:** The rounded classroom comparison is about **1% of Earth’s sea-level air density**, not oxygen percentage or the fraction of all atmospheric mass. [NASA/JPL quick facts](https://www.jpl.nasa.gov/news/press_kits/ingenuity/landing/quick_facts/) provides the general comparison. The [NASA/JPL first-flight analysis](https://science.nasa.gov/blog/what-were-learning-about-ingenuitys-flight-control-and-aerodynamic-performance/) measured approximately **1.3%** during flight one. Density depends on local conditions. Both the chart and narration use approximate wording.
+- **Air density:** The rounded classroom comparison is about **1% of Earth’s sea-level air density**, not oxygen percentage or the fraction of all atmospheric mass. [NASA/JPL quick facts](https://www.jpl.nasa.gov/news/press_kits/ingenuity/landing/quick_facts/) provides the general comparison. The [NASA/JPL first-flight analysis](https://science.nasa.gov/blog/what-were-learning-about-ingenuitys-flight-control-and-aerodynamic-performance/) measured approximately **1.3%** during flight one. Density depends on local conditions. Both the fact cards and narration use approximate wording.
 - **Gravity:** Approximately **38%** of Earth’s surface gravity, from the same NASA/JPL quick facts. This helps make clear that gravity and air density are different quantities.
 - **Rotors:** Approximately **2,400 revolutions per minute** is a nominal design figure, from [NASA/JPL spacecraft details](https://www.jpl.nasa.gov/news/press_kits/ingenuity/landing/mission/spacecraft/). The display explicitly states that speeds varied between flights, rather than treating this as a constant measured speed.
 - **User-supplied video:** [YouTube video hW5akI5Rnyg, starting at 1:55](https://www.youtube.com/watch?v=hW5akI5Rnyg&t=115s). NASA’s [25 January 2024 mission-ending announcement](https://www.nasa.gov/news-release/after-three-years-on-mars-nasas-ingenuity-helicopter-mission-ends/) embeds this same video ID. On 5 November, the source page’s duration/chapter metadata and sampled player frames were inspected for the three short excerpts. The caption endpoint returned no transcript. Science explanations remain independently verified against the primary sources above, rather than transcribed or attributed to a particular timestamp. See [clip review notes](VIDEO_CLIPS.md).
 
 The optional player loads only after a visitor clicks, uses an English-original label, has no autoplay, and includes a direct YouTube fallback link. It is not downloaded, edited, revoiced or represented as an offline asset. The local photographic story, fact panel, comparison bars and scripts remain available offline. Switching language or artifact removes the embedded player; starting local narration removes it as well to avoid overlapping voices.
 
+## The science it made possible and Laser the Moon
+
+Checked against NASA and JPL pages on 5 November 2026. Text lives in `data/science.js`.
+
+| Exhibit | Claim | Primary reference |
+|---|---|---|
+| Apollo 11 | 58 samples, 21.5 kg. | [Apollo collection and curation, NASA](https://www.nasa.gov/wp-content/uploads/2019/04/02_allton_corrected_apollo.pdf) |
+| Apollo 17 rover | About 110 kg of samples returned by the mission. Orange soil from Shorty Crater holds volcanic glass from about 3.5 billion years ago. The 110 kg is the mission total, not rover cargo. | [Same NASA report](https://www.nasa.gov/wp-content/uploads/2019/04/02_allton_corrected_apollo.pdf), [Sample 74220](https://curator.jsc.nasa.gov/lunar/lsc/74220.pdf), [NASA ARES](https://ares.jsc.nasa.gov/interaction/lmdp/diskdetails.cfm?disk=80&class=Orange+Soil) |
+| Reflector | The Moon recedes about 3.8 cm a year, the arrays need no power and still return data, and the data shows a fluid core. | [JPL: The Apollo Experiment That Keeps on Giving](https://www.jpl.nasa.gov/news/the-apollo-experiment-that-keeps-on-giving/) |
+| Opportunity | Designed for 90 sols, worked almost 15 years, drove 45.16 km, and found evidence Mars may once have been able to sustain microbial life. | [NASA Opportunity mission](https://science.nasa.gov/mission/mer-opportunity/) |
+| Ingenuity | 72 flights, up to 5 planned, 48 airfields, aerial scout for Perseverance, paving the way for future flight. | [NASA mission conclusion](https://www.nasa.gov/news-release/after-three-years-on-mars-nasas-ingenuity-helicopter-mission-ends/) |
+| Landing debris | Parachute 21.5 m wide, the biggest deployed on Mars. Backshell hit at about 126 km/h. Images could help safer future landings. | [NASA: gear that helped Perseverance land](https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-mars-helicopter-spots-gear-that-helped-perseverance-rover-land/) |
+| Laser the Moon | Mean perigee 363,300 km and mean apogee 405,500 km. | [NASA Moon fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html) |
+
+Laser the Moon is a classroom simulation, not live data. Each shot picks a distance within the range above, using the true speed of light. Students calculate with the rounded 300,000 km/s, and answers within 2% count as correct. The drift message assumes a steady 3.8 cm a year since 1969.
+
 ## Reuse notes
 
 Read [NASA image and media guidelines](https://www.nasa.gov/nasa-brand-center/images-and-media/) and [JPL image use policy](https://www.jpl.nasa.gov/jpl-image-use-policy/). Retain mission-partner credits. No NASA insignia or claim of endorsement is used. Fonts are distributed under their included SIL Open Font License files (Inter, Noto Nastaliq Urdu, Noto Naskh Arabic, Noto Sans SC), downloaded from the Google Fonts source repository. Original site code and educational prose may be reused for this student project; NASA imagery and font licensing remain separate.
+
+
+Expanded photographic collections: see [IMAGE_COLLECTIONS.md](IMAGE_COLLECTIONS.md) for every gallery image, exact archive ID, credit, caption and NASA source. Apollo 15 is labeled as a related experiment; it is not substituted for the Apollo 11 array.

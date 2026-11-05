@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import vm from 'node:vm';
 const context={};context.window=context;vm.createContext(context);
 vm.runInContext(await readFile('data/media.js','utf8'),context);
+vm.runInContext(await readFile('data/content.js','utf8'),context);
 for(const folder of ['assets/images','assets/fonts','data','docs','scripts','tests','.github/workflows',...['en','ur','ps','ar','fr','es','zh-CN'].map(l=>'audio/'+l)]){
  await mkdir(folder,{recursive:true});
  if(folder.startsWith('audio/'))await writeFile(folder+'/.gitkeep','');
@@ -20,5 +21,7 @@ for(const [file,license,source]of [
  const local='assets/fonts/'+file,data=await readFile(local);
  entries.push({kind:'font',file:local,bytes:data.length,sha256:createHash('sha256').update(data).digest('hex'),license:'assets/fonts/'+license,source:'https://raw.githubusercontent.com/google/fonts/main/ofl/'+source});
 }
-await writeFile('docs/ASSET_INVENTORY.json',JSON.stringify({photographs:9,fontFamilies:4,cinematicScenes:['ingenuity','first-flight','aerial','debris','final'],assets:entries},null,2)+'\n');
-console.log('Prepared seven recording folders and verified inventory of nine local NASA photographs and four fonts.');
+const photographs=Object.keys(context.PHOTOS).length;
+const artifactCollections=Object.fromEntries(context.ARTIFACTS.map(artifact=>[artifact.id,{scenes:artifact.scenePhotos??[artifact.photo],gallery:artifact.galleryPhotos??artifact.scenePhotos??[artifact.photo]}]));
+await writeFile('docs/ASSET_INVENTORY.json',JSON.stringify({photographs,fontFamilies:4,cinematicScenes:['ingenuity','first-flight','aerial','debris','final'],artifactCollections,assets:entries},null,2)+'\n');
+console.log(`Prepared seven recording folders and verified inventory of ${photographs} local NASA photographs and four fonts.`);

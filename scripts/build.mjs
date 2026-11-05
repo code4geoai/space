@@ -2,7 +2,7 @@ import {cp,mkdir,writeFile,rm} from 'node:fs/promises';
 import path from 'node:path';
 await import('./prepare.mjs');
 await import('./cache.mjs');
-const files=['index.html','styles.css','app.js','sw.js','data','assets','audio','docs','README.md'];
+const files=['index.html','styles.css','app.js','science.js','sw.js','data','assets','audio','docs','README.md'];
 const output=path.resolve('dist');
 if(path.dirname(output)!==process.cwd()||path.basename(output)!=='dist')throw Error('Unexpected build path');
 await rm(output,{recursive:true,force:true});

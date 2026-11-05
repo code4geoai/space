@@ -1,0 +1,47 @@
+# NASA photographic collections
+
+24 locally bundled NASA photographs. The five expanded artifact stories each use three different photographs, with four images in each gallery. Ingenuity retains its five-scene collection. Source captions and credits are in English; these are not presented as reviewed translations.
+
+## apollo11
+
+- **AS11-40-5927** — AS11-40-5927. Eagle before ascent, July 1969. The gold-covered lower portion is the descent stage that stayed on the Moon; the complete lander is shown. Credit: NASA. [NASA source](https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5927&mission=AS11&roll=40). Local: `assets/images/apollo11.jpg`.
+- **Eagle footpad detail** — AS11-40-5917. Apollo 11 lunar-module footpad and contact probe on the lunar surface, July 1969. A close view of hardware belonging to Eagle’s descent stage. Credit: NASA/Buzz Aldrin. [NASA source](https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5917&mission=AS11&roll=40). Local: `assets/images/apollo11-footpad.jpg`.
+- **Beneath Eagle’s descent stage** — AS11-40-5921. Lunar surface beneath Eagle’s descent-engine area, photographed during the Apollo 11 lunar-module inspection. Ground and spacecraft context, not an image taken after ascent. Credit: NASA/Buzz Aldrin. [NASA source](https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5921&mission=AS11&roll=40). Local: `assets/images/apollo11-engine.jpg`.
+- **Aldrin at Eagle’s ladder** — AS11-40-5869. Buzz Aldrin on Eagle’s footpad with the ladder above him, July 1969. The complete lunar module was still present; this is not a post-departure descent-stage photograph. Credit: NASA/Neil Armstrong. [NASA source](https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5869&mission=AS11&roll=40). Local: `assets/images/apollo11-ladder.jpg`.
+
+## rover
+
+- **AS17-147-22527** — AS17-147-22527. Eugene Cernan test-drives the Apollo 17 lunar rover beside the lunar module, December 1972. Credit: NASA/Harrison Schmitt. [NASA source](https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=22527&mission=AS17&roll=147). Local: `assets/images/rover.jpg`.
+- **Apollo 17 rover equipment** — AS17-134-20389. Front of the Apollo 17 lunar rover, showing its communications and television equipment and battery-cover area, December 1972. Credit: NASA/Eugene Cernan. [NASA source](https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=20389&mission=AS17&roll=134). Local: `assets/images/rover-front.jpg`.
+- **The rover’s repaired fender** — AS17-137-20979. Apollo 17 rover fender repair using maps and clamps, documented at Station 2. A close-up of the actual lunar rover, December 1972. Credit: NASA/Eugene Cernan. [NASA source](https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=20979&mission=AS17&roll=137). Local: `assets/images/rover-fender.jpg`.
+- **Rover in its landing-site setting** — AS17-134-20435. Wide Apollo 17 landing-site photograph with the lunar rover in the background and surface-experiment equipment in the foreground. Context view; the rover is small in this frame. Credit: NASA/Eugene Cernan. [NASA source](https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=20435&mission=AS17&roll=134). Local: `assets/images/rover-wide.jpg`.
+
+## reflector
+
+- **AS11-40-5952** — AS11-40-5952. Apollo 11 laser ranging retroreflector deployed on the lunar surface, July 1969. Credit: NASA/Neil Armstrong. [NASA source](https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5952&mission=AS11&roll=40). Local: `assets/images/reflector.jpg`.
+- **Carrying the Apollo 11 reflector** — AS11-40-5942. Buzz Aldrin carries the laser retroreflector in his right hand and the passive seismometer in his left, during Apollo 11 experiment deployment in July 1969. Credit: NASA/Neil Armstrong. [NASA source](https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5942&mission=AS11&roll=40). Local: `assets/images/reflector-carry.jpg`.
+- **Reflector deployment context** — AS11-40-5946. Apollo 11 experiment-deployment view: Aldrin works on the seismometer; the laser reflector is to his left. The instrument he is handling is the seismometer, not the reflector. Credit: NASA/Neil Armstrong. [NASA source](https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5946&mission=AS11&roll=40). Local: `assets/images/reflector-context.jpg`.
+- **Related mission: Apollo 15 array** — AS15-85-11468. Related experiment: Apollo 15 laser retroreflector array photographed by David Scott in 1971. This is a different array from the Apollo 11 artifact described in the story. Credit: NASA/David Scott. [NASA source](https://science.nasa.gov/photojournal/the-apollo-15-lunar-laser-ranging-retroreflector-a-fundamental-point-on-the-moon/). Local: `assets/images/reflector-apollo15.jpg`.
+
+## opportunity
+
+- **Opportunity’s solar-panel self-view** — PIA18079. Opportunity’s cleaned solar arrays in a Pancam photographic mosaic from March 22–24, 2014. Approximately true color and vertical projection; the mast is absent from this assembled view. Credit: NASA/JPL-Caltech/Cornell Univ./Arizona State Univ.. [NASA source](https://science.nasa.gov/photojournal/self-portrait-by-freshly-cleaned-opportunity-mars-rover-in-march-2014/). Local: `assets/images/opportunity-panels.jpg`.
+- **Opportunity’s shadow** — PIA06739. Opportunity’s shadow and foreground rover hardware, photographed by its front hazard camera inside Endurance Crater on July 26, 2004. Credit: NASA/JPL. [NASA source](https://www.jpl.nasa.gov/images/pia06739-opportunity-catches-its-shadow-on-sol-180/). Local: `assets/images/opportunity-shadow.jpg`.
+- **Tracks left by Opportunity** — PIA23246. Opportunity’s wheel tracks in Perseverance Valley, assembled from Navcam photographs on sols 5000–5030. This is a terrain-and-tracks view; Perseverance Valley is a place name, not the Perseverance rover. Credit: NASA/JPL-Caltech. [NASA source](https://science.nasa.gov/photojournal/opportunitys-tracks-in-perseverance-valley/). Local: `assets/images/opportunity-tracks.jpg`.
+- **PIA22222** — PIA22222. Opportunity’s first selfie, assembled from Microscopic Imager frames on sols 5000 and 5006 in 2018. The camera was designed for close-up rocks, so the rover is out of focus. Photographic mosaic. Credit: NASA/JPL-Caltech. [NASA source](https://www.jpl.nasa.gov/images/pia22222-opportunitys-first-selfie/). Local: `assets/images/opportunity.jpg`.
+
+## ingenuity
+
+- **PIA25881** — PIA25881. Ingenuity on Mars, April 16, 2023, photographed by Perseverance’s Mastcam-Z. Enhanced color photograph, not an illustration. Credit: NASA/JPL-Caltech/ASU/MSSS. [NASA source](https://science.nasa.gov/photojournal/ingenuity-at-two-years-on-mars/). Local: `assets/images/ingenuity.jpg`.
+- **PIA24584** — PIA24584. Ingenuity’s navigation camera sees its own shadow during the first flight on April 19, 2021. Black-and-white photograph. Credit: NASA/JPL-Caltech. [NASA source](https://science.nasa.gov/resource/ingenuitys-first-black-and-white-image-from-the-air/). Local: `assets/images/first-flight.jpg`.
+- **PIA24593** — PIA24593. First aerial color photograph from Ingenuity, taken during its second flight on April 22, 2021. Landing-gear shadows appear near the edge. Credit: NASA/JPL-Caltech. [NASA source](https://science.nasa.gov/photojournal/first-aerial-color-image-of-mars/). Local: `assets/images/aerial.jpg`.
+- **PIA25219** — PIA25219. Perseverance’s backshell and parachute photographed by Ingenuity on flight 26, April 19, 2022. This is discarded landing hardware, not a crashed rover. Credit: NASA/JPL-Caltech. [NASA source](https://science.nasa.gov/resource/rovers-backshell-seen-from-the-air/). Local: `assets/images/debris.jpg`.
+- **PIA26238** — PIA26238. SuperCam RMI photographic mosaic from February 24, 2024. Ingenuity at its final resting site, right; a detached rotor blade, left. The small helicopter appears in a wide landscape. Credit: NASA/JPL-Caltech/LANL/CNES/CNRS. [NASA source](https://science.nasa.gov/resource/supercams-rmi-spots-ingenuitys-broken-rotor/). Local: `assets/images/final.jpg`.
+
+## debris
+
+- **PIA25219** — PIA25219. Perseverance’s backshell and parachute photographed by Ingenuity on flight 26, April 19, 2022. This is discarded landing hardware, not a crashed rover. Credit: NASA/JPL-Caltech. [NASA source](https://science.nasa.gov/resource/rovers-backshell-seen-from-the-air/). Local: `assets/images/debris.jpg`.
+- **Parachute viewed from the rover** — PIA25214. Perseverance’s parachute photographed from the rover by Mastcam-Z on April 6, 2022, sol 401. Ground-level context rather than Ingenuity’s aerial view. Credit: NASA/JPL-Caltech/ASU/MSSS. [NASA source](https://science.nasa.gov/photojournal/perseverance-views-its-parachute/). Local: `assets/images/debris-ground.jpg`.
+- **Another aerial debris view** — PIA25217. Discarded Perseverance backshell and parachute seen by Ingenuity during flight 26 on April 19, 2022. A separate aerial photograph of the landing hardware. Credit: NASA/JPL-Caltech. [NASA source](https://www.jpl.nasa.gov/images/pia25217-rover-landing-gear-seen-from-the-air-by-mars-helicopter/). Local: `assets/images/debris-aerial.jpg`.
+- **Heat shield seen from orbit** — PIA24337. Perseverance’s discarded heat shield on Mars, seen by the Mars Reconnaissance Orbiter’s HiRISE camera on February 19, 2021. Processed orbital close-up, not a surface-camera photograph. Credit: NASA/JPL-Caltech/University of Arizona. [NASA source](https://science.nasa.gov/photojournal/close-up-of-perseverance-heat-shield-on-the-martian-surface/). Local: `assets/images/debris-heatshield.jpg`.
+

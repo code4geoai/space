@@ -63,14 +63,15 @@
  function openArtifact(id,focus=true){
   if(!canChange())return;stopPlayback();const a=ARTIFACTS.find(a=>a.id===id);if(!a)return;state.artifact=a;
   const {language,value}=textFor(a);state.contentLang=language;$('exhibit').hidden=false;$('storyTitle').textContent=value[0];$('storyTitle').lang=language;$('storyTitle').dir=LANGUAGES[language].dir;
-  const scenes=a.id==='ingenuity'?(INGENUITY_SCENES[language]||INGENUITY_SCENES.en):[[value[0],value[2]]];
+  const sentences=(value[2].match(/[^.!?۔؟。！？]+[.!?۔؟。！？]*/gu)??[value[2]]).map(sentence=>sentence.trim()).filter(Boolean);
+  const scenes=a.id==='ingenuity'?(INGENUITY_SCENES[language]||INGENUITY_SCENES.en):a.scenePhotos?.length>1?sentences.map(sentence=>[value[0],sentence]):[[value[0],value[2]]];
   state.scenes=scenes.map(([title,text],i)=>({title,text,photo:a.scenePhotos?.[i]??a.photo,start:i*12}));
   $('facts').textContent=value[1];$('facts').lang=language;$('facts').dir=LANGUAGES[language].dir;
   $('transcript').replaceChildren();state.scenes.forEach(scene=>{const p=document.createElement('p');p.textContent=scene.text;p.lang=language;p.dir=LANGUAGES[language].dir;$('transcript').append(p)});
   $('contentNotice').textContent=language!==state.lang?t('englishFallback'):(language==='en'?t('reviewSource'):t('review'));
   $('sources').replaceChildren();a.sources.forEach(([title,url])=>{const link=document.createElement('a');link.href=url;link.target='_blank';link.rel='noopener';link.lang='en';link.dir='ltr';link.textContent=title+' ↗';$('sources').append(link)});
   $('sceneNav').replaceChildren();state.scenes.forEach((scene,i)=>{const b=document.createElement('button');b.textContent=String(i+1).padStart(2,'0');b.setAttribute('aria-label',t('scene')+' '+(i+1)+': '+scene.title);b.onclick=()=>seek(state.scenes[i].start);$('sceneNav').append(b)});
-  resetTimeline();renderGallery();renderQuiz();renderFlightLab();updateRecording();status('ready');
+  resetTimeline();renderGallery();renderQuiz();renderScience($('scienceLab'),a.id,state.lang);renderFlightLab();updateRecording();status('ready');
   if(focus){$('exhibit').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});$('exhibit').focus({preventScroll:true})}
  }
  function updateRecording(){
@@ -78,7 +79,7 @@
   label($('play'),$('audioMode').value==='visual'?'play':'playNarration');voiceAvailability();
  }
  function renderGallery(){
-  $('galleryItems').replaceChildren();for(const key of [...new Set(state.scenes.map(s=>s.photo))]){const b=document.createElement('button');b.setAttribute('aria-label',t('galleryLabel')+': '+PHOTOS[key].id);const img=document.createElement('img');img.loading='lazy';img.width=300;img.height=200;setImage(img,key);const span=document.createElement('span');span.lang='en';span.dir='ltr';span.textContent=PHOTOS[key].id+' · '+PHOTOS[key].credit;b.append(img,span);b.onclick=()=>{galleryReturn=b;setImage($('largePhoto'),key);$('largeCaption').textContent=caption(key);$('largeCaption').lang='en';$('largeCaption').dir='ltr';$('largeSource').href=PHOTOS[key].source;$('photoDialog').showModal()};$('galleryItems').append(b)}
+  $('galleryItems').replaceChildren();for(const key of [...new Set(state.artifact.galleryPhotos??state.scenes.map(s=>s.photo))]){const b=document.createElement('button');b.setAttribute('aria-label',t('galleryLabel')+': '+(PHOTOS[key].label??PHOTOS[key].id));const img=document.createElement('img');img.loading='lazy';img.width=300;img.height=200;setImage(img,key);const span=document.createElement('span');span.lang='en';span.dir='ltr';span.textContent=(PHOTOS[key].label?PHOTOS[key].label+' · ':'')+PHOTOS[key].id+' · '+PHOTOS[key].credit;b.append(img,span);b.onclick=()=>{galleryReturn=b;setImage($('largePhoto'),key);$('largeCaption').textContent=caption(key);$('largeCaption').lang='en';$('largeCaption').dir='ltr';$('largeSource').href=PHOTOS[key].source;$('photoDialog').showModal()};$('galleryItems').append(b)}
  }
  function renderQuiz(){
   const a=state.artifact;$('question').textContent=a.quiz.key==='flights'?QUIZ_FLIGHTS[state.lang]:t('question');$('answers').replaceChildren();$('feedback').textContent='';
@@ -96,8 +97,7 @@
   const title=el('h3',text.title);title.id='flightLabTitle';lab.append(title,el('p',text.intro));
   const cards=el('div',null,'flight-facts');
   for(const [number,key]of [['~1%','density'],['~38%','gravity'],['~2,400 rpm','rotors']]){const card=el('article'),metric=el('bdi',number,'flight-number');metric.dir='ltr';card.append(metric,el('h4',text[key]),el('p',text[key+'Text']));cards.append(card)}lab.append(cards);
-  const chart=el('div',null,'density-chart');
-  for(const [label,cls]of [[text.earth,'earth-air'],[text.mars,'mars-air']]){const row=el('div',null,'density-row'),track=el('div',null,'density-track'),bar=el('span',null,cls);track.setAttribute('aria-hidden','true');track.append(bar);row.append(el('p',label),track);chart.append(row)}lab.append(chart,el('p',text.note,'small'));
+  lab.append(el('p',text.note,'small'));
   const sources=el('div',null,'sources');for(const [name,url]of FLIGHT_LAB.sources){const a=el('a',name+' ↗');a.href=url;a.target='_blank';a.rel='noopener';a.lang='en';a.dir='ltr';sources.append(a)}lab.append(sources);
   const words=text.excerpts,video=el('div',null,'video-reference');video.append(el('h3',words.heading),el('p',words.hint,'small'),el('p',text.videoNote,'small'));
   const excerptCards=el('div',null,'video-clips');
@@ -137,7 +137,7 @@
  function end(){state.playing=false;cancelAnimationFrame(state.frame);state.time=state.duration;paint();status('ended');label($('pause'),'pause')}
  function tick(now){
   if(!state.playing||state.mode!=='visual')return;
-  if(document.hidden){state.last=now}else{state.time=Math.min(state.duration,state.time+(now-state.last)/1000*Number($('speed').value));state.last=now;paint()}
+  if(document.hidden){state.last=now}else{state.time=Math.min(state.duration,state.time+Math.max(0,now-state.last)/1000*Number($('speed').value));state.last=now;paint()}
   if(state.time>=state.duration)return end();state.frame=requestAnimationFrame(tick);
  }
  async function play(){
@@ -205,6 +205,11 @@
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&state.playing)togglePause()});
  window.addEventListener('pagehide',()=>{stopPlayback();if(recorder?.state==='recording')recorder.stop();stream?.getTracks().forEach(track=>track.stop())});
  applyLanguage(stored('sa-v5-language')||'en');
+ const languageSlot=document.querySelector('.language-slot'),languageMenu=document.querySelector('.language');
+ function positionLanguage(){languageMenu.classList.toggle('is-floating',!!document.fullscreenElement||languageSlot.getBoundingClientRect().top<12)}
+ if('IntersectionObserver'in window){new IntersectionObserver(([entry])=>languageMenu.classList.toggle('is-floating',!!document.fullscreenElement||entry.intersectionRatio<.99),{threshold:[0,1],rootMargin:'-12px 0px 0px 0px'}).observe(languageSlot)}else window.addEventListener('scroll',positionLanguage,{passive:true});
+ document.addEventListener('fullscreenchange',()=>{(document.fullscreenElement||languageSlot).append(languageMenu);positionLanguage()});
+ window.addEventListener('resize',positionLanguage);positionLanguage();
  window.speechSynthesis?.addEventListener('voiceschanged',voiceAvailability);
  deviceVoices(); // Start asynchronous browser voice discovery before the first Play click.
  const controlledAtLoad=!!navigator.serviceWorker?.controller;

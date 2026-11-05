@@ -29,15 +29,23 @@ The first download includes a full Simplified Chinese font and may take longer o
 
 ## Ingenuity flight lab
 
+The narration text follows the playback controls immediately. Simple science fact cards and the short video clips come afterward; there are no air-density comparison bars.
+
 Ingenuity also includes a seven-language flight-science panel: an Earth/Mars air-density comparison, gravity and nominal rotor-speed facts, linked primary citations, and the user-selected NASA YouTube video beginning at **1:55**. The 1% comparison is air density, not oxygen content; density and rotor speed vary with conditions. The optional English video requires internet and loads only after a click. Local photographs, narration scripts and the scientific panel work offline; no YouTube video is claimed to be bundled. A browser test intercepts the embed to verify its behaviour without depending on YouTube availability.
 
 Three short online excerpts are available at **0:26–0:56**, **0:59–1:29**, and **1:55–2:25**, each with a translated question and an explanation toggle. Embedded excerpts have explicit start/end boundaries, with no autoplay. Direct YouTube links open the full source at the selected start. The questions also work offline. See [clip selections and review notes](docs/VIDEO_CLIPS.md).
 
+## The science it made possible
+
+Every exhibit has a seven-language panel with a short explanation, two cited figures and NASA source links. The reflector exhibit also has **Laser the Moon**: fire a pulse, read the round-trip time, and calculate the distance with `distance = speed × time ÷ 2`. It is a classroom simulation, not live data, and works offline. Text and figures are in `data/science.js`, the logic is in `science.js`, and claims are cited in [SOURCES.md](docs/SOURCES.md).
+
 ## Languages and typography
+
+The single language selector becomes a floating blue-and-orange card when its header position scrolls out of view. Its label remains visible on mobile, and the same selector stays accessible in classroom fullscreen mode. Returning to the top restores it to the header.
 
 English, Urdu, Pashto, Arabic, French, Spanish and Simplified Chinese have separately stored exhibit text. Non-English strings are **unreviewed drafts**, never represented as human-reviewed translations. Supplementary untranslated UI remains explicitly English with an **EN** badge and `lang="en" dir="ltr"`; missing exhibit translations show a visible English-source notice and correct language metadata. Voice matching uses the actual story language. No English text is silently spoken as Urdu or Pashto.
 
-Urdu uses local Noto Nastaliq Urdu, including headings, with generous line boxes and vertical padding. Arabic and Pashto use local Noto Naskh Arabic. Chinese uses local Noto Sans SC. Inter covers Latin text. Layout uses logical properties and document-level `dir`; archive IDs and credits retain their source-language metadata. All font licenses ship in `assets/fonts/`.
+Story text follows V4’s clearer typography at 1.12rem: system UI for Latin scripts, local Noto Nastaliq Urdu for Urdu paragraphs, Noto Naskh Arabic for Arabic/Pashto and Urdu story headings, and Noto Sans SC for Chinese. Generous language-specific line heights preserve RTL readability. The rest of the interface retains its bundled fonts. Layout uses logical properties and document-level `dir`; archive IDs and credits retain their source-language metadata. All bundled font licenses ship in `assets/fonts/`.
 
 ## Verify and build
 
@@ -70,9 +78,11 @@ For manual hosting, upload **the contents of `dist/`** to any static HTTPS host.
 - `data/content.js`: artifact titles, facts, fictional stories, quiz data and localized cinematic subtitles.
 - `data/media.js`: NASA photograph metadata and independent MP3/cue manifest. No audio is currently declared available.
 - `audio/en/`, `audio/ur/`, `audio/ps/`, `audio/ar/`, `audio/fr/`, `audio/es/`, `audio/zh-CN/`: recording folders, preserved in Git with empty `.gitkeep` files.
-- `docs/ASSET_INVENTORY.json`: all nine NASA photographs and four font families, with source URLs, byte sizes and SHA-256 checksums; includes the five cinematic scene images.
-- `assets/images/`: nine optimized photographs, longest side at most 1600 px, JPEG quality 86, no cropping or generated content. Display crops in collection cards are cosmetic; the gallery shows the complete downloaded frame.
+- `docs/ASSET_INVENTORY.json`: all 24 NASA photographs and four font families, with source URLs, byte sizes and SHA-256 checksums; includes the five cinematic scene images.
+- `assets/images/`: 24 optimized photographs, longest side at most 1600 px, JPEG quality 86, no cropping or generated content. Display crops in collection cards are cosmetic; the gallery shows the complete downloaded frame.
 - `scripts/download-assets.ps1`: reproducible official-source download and optimization on Windows; requires internet and System.Drawing. It skips existing final files.
 - `docs/SOURCES.md`: claim and photograph provenance. Source captions are summarized in English; NASA archive captions remain linked.
 
 Maintain consent privately and publish only minimal chosen credits. This site stores only a preferred interface language locally. Microphone recordings stay on the device until a person deliberately downloads and separately submits them. No upload endpoint exists.
+
+Expanded photo stories: Apollo 11, the Apollo 17 rover, the laser reflector, Opportunity and Perseverance debris each have three photographic scenes and four gallery images. See docs/IMAGE_COLLECTIONS.md for all 24 bundled photographs and their NASA credits.

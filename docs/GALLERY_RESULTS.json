@@ -1,0 +1,22 @@
+[
+  {
+    "language": "en",
+    "status": "PASS",
+    "checks": "Six artifacts offline: distinct scene photographs, full galleries, NASA sources, keyboard focus and mobile width"
+  },
+  {
+    "language": "ur",
+    "status": "PASS",
+    "checks": "Six artifacts offline: distinct scene photographs, full galleries, NASA sources, keyboard focus and mobile width"
+  },
+  {
+    "language": "ps",
+    "status": "PASS",
+    "checks": "Six artifacts offline: distinct scene photographs, full galleries, NASA sources, keyboard focus and mobile width"
+  },
+  {
+    "language": "ar",
+    "status": "PASS",
+    "checks": "Six artifacts offline: distinct scene photographs, full galleries, NASA sources, keyboard focus and mobile width"
+  }
+]

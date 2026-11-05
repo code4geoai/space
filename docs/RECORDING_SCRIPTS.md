@@ -50,7 +50,7 @@ The word **بہتر** in the final segment means seventy-two here; verify its re
 }
 ```
 
-5. Replace the example numbers with the actual start of each spoken segment and exact duration. Five increasing cue starts, beginning at zero, are required for Ingenuity. A one-scene artifact needs `[0]`. The player uses MP3 `currentTime`, not a second independent timer, so pause, seek and playback speed keep scenes/subtitles together.
+5. Replace the example numbers with the actual start of each spoken segment and exact duration. Five increasing cue starts, beginning at zero, are required for Ingenuity. Each other artifact now has three photographic scenes and needs three increasing cue starts, beginning at zero. Measure the start of each of its three story sentences. The player uses MP3 `currentTime`, not a second independent timer, so pause, seek and playback speed keep scenes/subtitles together.
 6. Run `npm run check`, `node scripts/cache.mjs`, `npm test`, and `npm run build`. A recording marked available but missing from disk fails checks. Rebuild and redeploy to include it in the offline cache.
 7. For a source change, keep this script pack and `data/content.js` identical. Changing language/artifact stops playback; the application never substitutes an unrelated language voice. The default listening mode prefers the reviewed student MP3 and otherwise uses a matching device voice after the visitor presses Play. Device narration follows sentence and scene completion; the silent mode remains available. A device voice is never labeled as a student recording.
 
