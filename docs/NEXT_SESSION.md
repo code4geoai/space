@@ -1,12 +1,14 @@
 # Next session
 
-Saved on 4 November 2026.
+Updated on 5 November 2026.
 
 The completed V5 work includes the restored V4 blue/orange theme, local NASA images and fonts, seven-language content, narration fallback, offline support, classroom presentation, recording scripts, and the Ingenuity flight-science panel. No student recordings have been supplied; translations remain marked unreviewed.
 
-## Next requested enhancement
+## Completed enhancement
 
-The user chose **short sections of the NASA video (online)** rather than separate downloaded/offline clips. These short sections have **not yet been implemented**. Review the footage before choosing exact start/end times. Suggested teaching topics are the thin-air challenge, flight achievements, and Ingenuity’s legacy; do not assume exact footage timings from those proposed topics.
+The requested **short online sections of the NASA video** are implemented: 0:26–0:56, 0:59–1:29 and 1:55–2:25. Each has a localized discussion question and explanation. Video remains online-only; questions work offline. See `docs/VIDEO_CLIPS.md` for source review, behaviour and limits.
+
+No further implementation task is queued. Real student recordings and fluent-speaker review of draft translations remain dependent on contributors; no student voices or consent records have been invented.
 
 Original reference: https://www.youtube.com/watch?v=hW5akI5Rnyg&t=115s
 

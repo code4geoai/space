@@ -31,6 +31,8 @@ The first download includes a full Simplified Chinese font and may take longer o
 
 Ingenuity also includes a seven-language flight-science panel: an Earth/Mars air-density comparison, gravity and nominal rotor-speed facts, linked primary citations, and the user-selected NASA YouTube video beginning at **1:55**. The 1% comparison is air density, not oxygen content; density and rotor speed vary with conditions. The optional English video requires internet and loads only after a click. Local photographs, narration scripts and the scientific panel work offline; no YouTube video is claimed to be bundled. A browser test intercepts the embed to verify its behaviour without depending on YouTube availability.
 
+Three short online excerpts are available at **0:26–0:56**, **0:59–1:29**, and **1:55–2:25**, each with a translated question and an explanation toggle. Embedded excerpts have explicit start/end boundaries, with no autoplay. Direct YouTube links open the full source at the selected start. The questions also work offline. See [clip selections and review notes](docs/VIDEO_CLIPS.md).
+
 ## Languages and typography
 
 English, Urdu, Pashto, Arabic, French, Spanish and Simplified Chinese have separately stored exhibit text. Non-English strings are **unreviewed drafts**, never represented as human-reviewed translations. Supplementary untranslated UI remains explicitly English with an **EN** badge and `lang="en" dir="ltr"`; missing exhibit translations show a visible English-source notice and correct language metadata. Voice matching uses the actual story language. No English text is silently spoken as Urdu or Pashto.
@@ -46,6 +48,8 @@ npm run build
 ```
 
 `npm test` launches local servers and uses Playwright with installed Chrome or Edge on Windows; otherwise install Chromium with `npx playwright install chromium`. The main suite tests English/Urdu/Pashto/Arabic at phone, tablet and desktop widths, image/font loading, RTL, headline geometry, keyboard and dialog focus, world filters, quiz, narration absence, audio synchronization using a temporary test-only audio response, fullscreen when supported, repository-subpath hosting and service-worker offline reloads. A second suite tests delayed voice discovery, all seven language matches, cancellation, pause/end races, automatic MP3 preference and device-voice fallback; it also records the real browser’s voice capabilities. Mocked control-flow tests do not claim to install missing OS voices. Results/screenshots are written to ignored `test-results/`. See [test report](docs/TEST_REPORT.md).
+
+The flight-lab and excerpt suites additionally check video selection, absolute clip boundaries, single-player cleanup, learning prompts, seven-language keyboard/mobile controls, and offline questions. They use intercepted frames so classroom UI tests do not depend on a live YouTube connection.
 
 `npm run build` regenerates the cache and creates a clean `dist/` directory with deployable assets. Tooling, tests, V4 archive and browser dependencies are excluded. `docs/V4-baseline.html` preserves the original for reference, outside the deployed distribution.
 

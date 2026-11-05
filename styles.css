@@ -63,6 +63,13 @@ html #language option[value="zh-CN"]{font-family:Chinese,Museum,sans-serif}
 .density-chart{padding:22px;background:#0e1b34;border-radius:14px;margin-block:20px}.density-row p{margin-bottom:7px;font-size:14px}.density-row+.density-row{margin-top:20px}
 .density-track{height:14px;border-radius:8px;background:#263d67;overflow:hidden}.density-track span{display:block;height:100%;border-radius:8px}.earth-air{width:100%;background:#87b9ff}.mars-air{width:1%;background:#ffb15b}
 .video-reference{border-top:1px solid #405474;padding-top:28px;margin-top:28px}.video-reference>a{display:inline-block;margin-inline-start:12px;text-decoration:none}.video-reference iframe{display:block;width:100%;aspect-ratio:16/9;border:1px solid #405474;border-radius:14px;margin-top:22px;background:#080f22}
+.video-reference iframe{min-height:200px}.video-clips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-block:22px}.video-clips article{min-width:0}
+.clip-button{display:flex;flex-direction:column;align-items:flex-start;gap:14px;width:100%;height:100%;padding:20px;text-align:start;background:#172b48;border:1px solid #45597e;border-radius:14px;line-height:1.8;color:#f4f6ff}
+.clip-button strong{font-size:17px;line-height:1.8}.clip-button bdi{color:#ffcf8e;font:600 14px Museum,Arial,sans-serif}.clip-button:hover,.clip-button[aria-pressed=true]{border-color:#ffb15b;background:#223956}
+.clip-button[aria-pressed=true]{box-shadow:inset 0 0 0 1px #ffb15b}.video-reference>button{margin-inline-end:10px;margin-block-end:12px}
+.clip-learning{border:1px solid #405474;border-radius:14px;padding:22px;background:#1a2b48;margin-block:22px}.clip-learning h4{font-size:17px;line-height:1.8;margin-block:0 18px}.clip-learning p{margin-top:18px;margin-bottom:0}
+html[lang=ur] .clip-button strong,html[lang=ur] .clip-learning h4{line-height:2.7}
+@media(max-width:700px){.video-clips{grid-template-columns:1fr}.clip-button{gap:10px;padding:18px}.clip-learning{padding:18px}}
 @media(max-width:700px){.flight-lab{padding:22px}.flight-facts{grid-template-columns:1fr}.flight-facts article{padding:20px}.video-reference>a{margin:12px 0 0;display:block;text-align:center}}
 @media(min-width:1600px){.hero{min-height:460px}}
 @media(max-width:900px){.hero{gap:16px;grid-template-columns:minmax(0,1fr) minmax(140px,.55fr)}.hero-planet{padding-inline:15px}}

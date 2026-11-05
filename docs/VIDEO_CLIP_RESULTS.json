@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Three excerpts use correct absolute start/end times, with one opt-in frame and no autoplay",
+    "status": "PASS"
+  },
+  {
+    "name": "Clip questions and keyboard controls work in all seven languages on 320px screens",
+    "status": "PASS"
+  },
+  {
+    "name": "Narration, language changes, artifact changes and Close all remove the video",
+    "status": "PASS"
+  },
+  {
+    "name": "Offline classroom retains all excerpt questions and explanations without video requests",
+    "status": "PASS"
+  }
+]

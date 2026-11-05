@@ -6,7 +6,7 @@ import path from 'node:path';
 const results=[];await mkdir('test-results',{recursive:true});
 const server=spawn(process.execPath,['scripts/serve.mjs'],{stdio:'pipe'});
 const base='http://127.0.0.1:4173';let browser;
-async function run(name,fn){try{await fn();results.push({name,status:'PASS'});console.log('PASS',name)}catch(e){results.push({name,status:'FAIL',error:e.message});console.error('FAIL',name,e.message)}}
+async function run(name,fn){try{await fn();results.push({name,status:'PASS'});console.log('PASS',name)}catch(e){results.push({name,status:'FAIL',error:e.message});console.error('FAIL',name,e.message)}finally{for(const context of browser?.contexts()??[])await context.close()}}
 const executableCandidates=process.platform==='win32'?['C:/Program Files/Google/Chrome/Application/chrome.exe','C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe']:[];
 let executablePath;for(const p of executableCandidates){try{await access(p);executablePath=p;break}catch{}}
 const wait=ms=>new Promise(r=>setTimeout(r,ms));

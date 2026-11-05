@@ -20,7 +20,8 @@ assert.ok(!(await readFile('sw.js','utf8')).includes('/.gitkeep'),'Git folder ma
 for(const l of Object.keys(LANGUAGES)){
  assert.ok((await stat('audio/'+l)).isDirectory(),`Missing recording folder: ${l}`);
  assert.ok(UI[l].headline);assert.ok(UI[l].review||l==='en');
- assert.ok(FLIGHT_LAB.text[l]);for(const value of Object.values(FLIGHT_LAB.text[l]))assert.equal(typeof value,'string');
+ assert.ok(FLIGHT_LAB.text[l]);for(const [key,value]of Object.entries(FLIGHT_LAB.text[l]))if(key!=='excerpts')assert.equal(typeof value,'string');
+ const excerpts=FLIGHT_LAB.text[l].excerpts;assert.equal(excerpts.clips.length,3);for(const row of excerpts.clips)assert.ok(row.length===3&&row.every(text=>typeof text==='string'&&text.length>0));
  for(const [key,value]of Object.entries(UI[l]))assert.equal(typeof value,'string',`Undefined UI ${l}/${key}`);
  assert.equal(INGENUITY_SCENES[l].length,5);
  for(const a of ARTIFACTS){assert.ok(a.text[l]?.every(Boolean),`Missing content ${l}/${a.id}`);assert.equal(a.text[l].length,3)}
@@ -39,6 +40,7 @@ for(const l of ['en','ur','ps'])for(const [,text]of INGENUITY_SCENES[l])assert.o
 for(const fontLicense of ['Inter-OFL.txt','Naskh-OFL.txt','Nastaliq-OFL.txt','Chinese-OFL.txt'])assert.ok((await readFile('assets/fonts/'+fontLicense,'utf8')).includes('OPEN FONT LICENSE'));
 assert.ok(html.includes('width=device-width'));assert.ok(!html.includes('autoplay'));
 assert.equal(FLIGHT_LAB.video.id,'hW5akI5Rnyg');assert.equal(FLIGHT_LAB.video.start,115);for(const [,source]of FLIGHT_LAB.sources)assert.ok(source.includes('nasa.gov'));
+assert.equal(FLIGHT_LAB.video.clips.length,3);for(const clip of FLIGHT_LAB.video.clips){assert.ok(clip.start>=0&&clip.end<=FLIGHT_LAB.video.duration);assert.ok(clip.end-clip.start>=20&&clip.end-clip.start<=30)}
 const inventory=JSON.parse(await readFile('docs/ASSET_INVENTORY.json','utf8'));
 assert.equal(inventory.assets.length,13);assert.equal(inventory.cinematicScenes.length,5);
 for(const asset of inventory.assets){const bytes=await readFile(asset.file);assert.equal(bytes.length,asset.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),asset.sha256,`Asset checksum mismatch: ${asset.file}`)}

@@ -85,7 +85,10 @@
   const options=a.quiz.options??[t('moon'),t('mars')],correct=a.quiz.key==='flights'?a.quiz.correct:(a.world==='moon'?0:1);
   options.forEach((option,i)=>{const b=document.createElement('button');b.className='outline';b.textContent=option;b.onclick=()=>{label($('feedback'),i===correct?'correct':'wrong');b.setAttribute('aria-pressed',i===correct?'true':'false')};$('answers').append(b)})
  }
- function stopVideo(){const frame=$('nasaVideoFrame');if(frame){frame.remove();if($('loadNasaVideo'))$('loadNasaVideo').hidden=false}}
+ function stopVideo(){
+  $('nasaVideoFrame')?.remove();if($('loadNasaVideo'))$('loadNasaVideo').hidden=false;if($('closeNasaVideo'))$('closeNasaVideo').hidden=true;
+  document.querySelectorAll('[data-clip]').forEach(button=>button.setAttribute('aria-pressed','false'));if($('clipLearning'))$('clipLearning').hidden=true;
+ }
  function renderFlightLab(){
   const lab=$('flightLab');lab.replaceChildren();lab.hidden=state.artifact.id!=='ingenuity';if(lab.hidden)return;
   const text=FLIGHT_LAB.text[state.lang]??FLIGHT_LAB.text.en;lab.lang=state.lang;lab.dir=LANGUAGES[state.lang].dir;
@@ -96,13 +99,30 @@
   const chart=el('div',null,'density-chart');
   for(const [label,cls]of [[text.earth,'earth-air'],[text.mars,'mars-air']]){const row=el('div',null,'density-row'),track=el('div',null,'density-track'),bar=el('span',null,cls);track.setAttribute('aria-hidden','true');track.append(bar);row.append(el('p',label),track);chart.append(row)}lab.append(chart,el('p',text.note,'small'));
   const sources=el('div',null,'sources');for(const [name,url]of FLIGHT_LAB.sources){const a=el('a',name+' ↗');a.href=url;a.target='_blank';a.rel='noopener';a.lang='en';a.dir='ltr';sources.append(a)}lab.append(sources);
-  const video=el('div',null,'video-reference');video.append(el('h3',text.videoTitle),el('p',text.videoNote,'small'));
-  const load=el('button',text.load,'primary');load.id='loadNasaVideo';
+  const words=text.excerpts,video=el('div',null,'video-reference');video.append(el('h3',words.heading),el('p',words.hint,'small'),el('p',text.videoNote,'small'));
+  const excerptCards=el('div',null,'video-clips');
+  const learning=el('div',null,'clip-learning');learning.id='clipLearning';learning.hidden=true;
+  const question=el('h4'),answer=el('p'),reveal=el('button',words.explain,'outline');question.id='clipQuestion';answer.id='clipAnswer';answer.hidden=true;reveal.setAttribute('aria-controls','clipAnswer');reveal.setAttribute('aria-expanded','false');
+  reveal.onclick=()=>{answer.hidden=!answer.hidden;reveal.textContent=answer.hidden?words.explain:words.hide;reveal.setAttribute('aria-expanded',String(!answer.hidden))};learning.append(question,reveal,answer);
+  const load=el('button',words.full,'primary');load.id='loadNasaVideo';
+  const close=el('button',words.stop,'outline');close.id='closeNasaVideo';close.hidden=true;close.onclick=()=>{stopVideo();notice.textContent='';load.focus()};
   const external=el('a',text.open,'outline');external.href=FLIGHT_LAB.video.url;external.target='_blank';external.rel='noopener';
   const notice=el('p',null,'small');notice.id='videoStatus';notice.setAttribute('role','status');
-  load.onclick=()=>{if(!navigator.onLine){notice.textContent=text.unavailable;return}stopPlayback();status('ready');const frame=el('iframe');frame.id='nasaVideoFrame';frame.title='NASA Ingenuity mission video · English';frame.lang='en';frame.src=`https://www.youtube-nocookie.com/embed/${FLIGHT_LAB.video.id}?start=${FLIGHT_LAB.video.start}&rel=0`;frame.allow='encrypted-media; fullscreen; picture-in-picture';frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';video.append(frame);load.hidden=true;notice.textContent=text.videoNote};
+  const playerHost=el('div',null,'video-host');
+  function loadVideo(clip,index){
+   stopVideo();
+   if(clip){document.querySelector(`[data-clip="${clip.id}"]`).setAttribute('aria-pressed','true');question.textContent=words.clips[index][1];answer.textContent=words.clips[index][2];answer.hidden=true;reveal.textContent=words.explain;reveal.setAttribute('aria-expanded','false');learning.hidden=false}
+   if(!navigator.onLine){notice.textContent=text.unavailable;return}
+   stopPlayback();status('ready');
+   const start=clip?.start??FLIGHT_LAB.video.start,range=clip?'&end='+clip.end:'';
+   const frame=el('iframe');frame.id='nasaVideoFrame';frame.title=clip?words.clips[index][0]+' · English NASA video':'NASA Ingenuity mission video · English';frame.lang='en';frame.src=`https://www.youtube-nocookie.com/embed/${FLIGHT_LAB.video.id}?start=${start}${range}&rel=0&playsinline=1&cc_load_policy=1&cc_lang_pref=en`;frame.allow='encrypted-media; fullscreen; picture-in-picture';frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';playerHost.append(frame);close.hidden=false;
+   external.href=`https://www.youtube.com/watch?v=${FLIGHT_LAB.video.id}&t=${start}s`;
+   if(clip){notice.replaceChildren(el('span',words.selected+' · '));const time=el('bdi',formatTime(clip.start)+'–'+formatTime(clip.end));time.dir='ltr';notice.append(time,el('span',' · '+words.playerHint))}else notice.textContent=words.playerHint;
+  }
+  FLIGHT_LAB.video.clips.forEach((clip,index)=>{const card=el('article'),button=el('button',null,'clip-button');button.dataset.clip=clip.id;button.setAttribute('aria-pressed','false');const time=el('bdi',formatTime(clip.start)+'–'+formatTime(clip.end));time.dir='ltr';button.append(el('span',words.watch+' '+(index+1),'small'),el('strong',words.clips[index][0]),time);button.onclick=()=>loadVideo(clip,index);card.append(button);excerptCards.append(card)});
+  load.onclick=()=>loadVideo();
   const provenance=el('a',text.source);provenance.href=FLIGHT_LAB.video.source;provenance.target='_blank';provenance.rel='noopener';
-  video.append(load,external,notice,provenance);lab.append(video);
+  video.append(excerptCards,load,close,external,notice,playerHost,learning,provenance);lab.append(video);
  }
  function formatTime(seconds){const n=Math.max(0,Math.floor(seconds));return Math.floor(n/60)+':'+String(n%60).padStart(2,'0')}
  function paint(){

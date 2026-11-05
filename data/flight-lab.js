@@ -14,3 +14,53 @@ window.FLIGHT_LAB={
  'zh-CN':{title:'如何在如此稀薄的空气中飞行？',intro:'机智号需要在非常稀薄的空气中产生升力。探索三条工程线索，再观看NASA视频。',density:'地表空气密度',densityText:'约为地球海平面空气密度的1%。',gravity:'地表重力',gravityText:'约为地球重力的38%。',rotors:'旋翼标称转速',rotorsText:'约每分钟2400转。两组旋翼反向旋转。',earth:'地球 · 100%',mars:'火星 · 约1%',note:'条形图比较空气密度，而不是氧气含量。密度随地点、季节和温度变化；首次飞行时约为地球海平面空气密度的1.3%。各次飞行的旋翼转速也有所不同。',videoTitle:'观看NASA故事',videoNote:'英语原版视频，仅限在线，从1:55开始。本地图片故事和事实可离线使用。',load:'加载NASA视频（在线）',open:'在YouTube打开 ↗',unavailable:'视频需要联网。图片故事、旁白控制和事实仍可离线使用。',source:'NASA来源 ↗'}
  }
 };
+/* Online excerpts of the original video, not downloaded or edited files.
+   Boundaries were selected within the public player's chapter ranges after
+   inspecting its metadata and sampled playback on 2026-11-05. Auto-chapter
+   labels are not treated as a scientific source or a reviewed transcript. */
+FLIGHT_LAB.video.duration=180;
+FLIGHT_LAB.video.clips=[
+ {id:'engineering',start:26,end:56},
+ {id:'milestones',start:59,end:89},
+ {id:'legacy',start:115,end:145}
+];
+const videoClipText={
+ en:{heading:'Small clips. Big discoveries.',hint:'Choose a 30-second excerpt, then press Play in the player. Each excerpt stops at its end time. YouTube links open the full video at that point.',watch:'Watch excerpt',full:'Load full NASA video (online)',stop:'Close video',selected:'Selected excerpt',playerHint:'Press Play in the video player. English original; YouTube captions depend on availability.',explain:'Show explanation',hide:'Hide explanation',clips:[
+ ['Flight engineering','Why is lift harder to produce in very thin air?','There are fewer air molecules for the rotors to push. Mars’s surface air density is roughly 1% of Earth’s at sea level.'],
+ ['Mission milestones','Ingenuity was designed for up to five test flights. How many did it complete?','It completed 72 flights—far more than the original demonstration plan.'],
+ ['A lasting legacy','How can a machine keep helping science after it stops flying?','Its photographs, flight data and engineering lessons can help people design and operate future explorers.']
+ ]},
+ ur:{heading:'چھوٹے کلپ، بڑی دریافتیں',hint:'۳۰ سیکنڈ کا حصہ منتخب کریں، پھر ویڈیو میں چلانے کا بٹن دبائیں۔ ہر حصہ مقررہ وقت پر رک جاتا ہے۔ یوٹیوب کا لنک مکمل ویڈیو اسی مقام سے کھولتا ہے۔',watch:'مختصر حصہ دیکھیں',full:'ناسا کی مکمل ویڈیو لوڈ کریں — آن لائن',stop:'ویڈیو بند کریں',selected:'منتخب حصہ',playerHint:'ویڈیو میں چلانے کا بٹن دبائیں۔ اصل ویڈیو انگریزی میں ہے؛ یوٹیوب کے ذیلی عنوانات دستیابی پر منحصر ہیں۔',explain:'وضاحت دکھائیں',hide:'وضاحت چھپائیں',clips:[
+ ['پرواز کی انجینئرنگ','بہت پتلی ہوا میں اٹھنے کی قوت پیدا کرنا کیوں مشکل ہے؟','روٹر جن ہوائی ذرات کو دھکیلتے ہیں وہ کم ہوتے ہیں۔ مریخ کی سطح پر ہوا کی کثافت زمین کی سطحِ سمندر کی ہوا کا تقریباً ایک فیصد ہے۔'],
+ ['مشن کے کارنامے','منصوبہ زیادہ سے زیادہ پانچ آزمائشی پروازوں کا تھا۔ انجینیوٹی نے کتنی پروازیں کیں؟','اس نے ۷۲ پروازیں کیں، جو ابتدائی منصوبے سے کہیں زیادہ تھیں۔'],
+ ['دیرپا میراث','پرواز رکنے کے بعد بھی ایک مشین سائنس کی مدد کیسے کر سکتی ہے؟','اس کی تصاویر، پرواز کا ڈیٹا اور انجینئرنگ کی سیکھ مستقبل کے کھوج کرنے والوں کی تیاری میں مدد دے سکتی ہے۔']
+ ]},
+ ps:{heading:'واړه کلپونه، سترې موندنې',hint:'د ۳۰ ثانیو برخه وټاکئ، بیا په ویډیو کې د پیل تڼۍ کېکاږئ. هره برخه په ټاکلي وخت پای ته رسېږي. د یوټیوب لینک له هماغه ځایه بشپړه ویډیو پرانیزي.',watch:'لنډه برخه وګورئ',full:'د ناسا بشپړه ویډیو پرانیزئ — آنلاین',stop:'ویډیو بنده کړئ',selected:'ټاکل شوې برخه',playerHint:'په ویډیو کې د پیل تڼۍ کېکاږئ. اصلي ویډیو انګلیسي ده؛ د یوټیوب لیکنې د شتون له مخې ښودل کېږي.',explain:'تشریح وښایئ',hide:'تشریح پټه کړئ',clips:[
+ ['د الوتنې انجینري','په نرۍ هوا کې د پورته کېدو ځواک جوړول ولې ګران دي؟','روټرونه د هوا لږ ذرات شاته ټېل وهي. د مریخ د سطحې د هوا کثافت د ځمکې د سمندر د سطحې د هوا شاوخوا یوه سلنه دی.'],
+ ['د ماموریت لاسته راوړنې','انجینیوټي د پنځو ازمایښتي الوتنو لپاره جوړه شوې وه. څو الوتنې یې وکړې؟','هغې ۷۲ الوتنې وکړې، چې له لومړني پلان څخه ډېرې وې.'],
+ ['تلپاتې میراث','یوه وسیله د الوتنې تر پای وروسته ساینس ته څنګه ګټه رسوي؟','انځورونه، د الوتنې معلومات او د انجینرۍ زده کړې یې د راتلونکو سپړونکو په جوړولو کې مرسته کوي.']
+ ]},
+ ar:{heading:'مقاطع قصيرة، اكتشافات كبيرة.',hint:'اختر مقطعًا من 30 ثانية ثم اضغط تشغيل داخل المشغّل. يتوقف المقطع عند نهايته. يفتح رابط يوتيوب الفيديو الكامل من الموضع نفسه.',watch:'شاهد المقطع',full:'تحميل فيديو ناسا الكامل عبر الإنترنت',stop:'إغلاق الفيديو',selected:'المقطع المختار',playerHint:'اضغط تشغيل داخل الفيديو. الأصل بالإنجليزية؛ تعتمد ترجمة يوتيوب على توفرها.',explain:'عرض التفسير',hide:'إخفاء التفسير',clips:[
+ ['هندسة الطيران','لماذا يصعب توليد قوة رفع في الهواء الرقيق جدًا؟','توجد جزيئات هواء أقل ليدفعها الدوار. كثافة هواء المريخ عند السطح نحو 1% من كثافة هواء الأرض عند مستوى البحر.'],
+ ['إنجازات المهمة','صُممت إنجينيويتي لما يصل إلى خمس رحلات اختبارية. كم رحلة أكملت؟','أكملت 72 رحلة، متجاوزة خطة التجربة الأصلية بكثير.'],
+ ['إرث مستمر','كيف تساعد آلة العلم بعد توقفها عن الطيران؟','تساعد صورها وبيانات طيرانها ودروسها الهندسية في تصميم وتشغيل مستكشفي المستقبل.']
+ ]},
+ fr:{heading:'Petits extraits. Grandes découvertes.',hint:'Choisissez un extrait de 30 secondes, puis appuyez sur Lecture dans le lecteur. Il s’arrête à la fin prévue. Le lien YouTube ouvre la vidéo complète à ce point.',watch:'Voir l’extrait',full:'Charger la vidéo NASA complète en ligne',stop:'Fermer la vidéo',selected:'Extrait sélectionné',playerHint:'Appuyez sur Lecture dans la vidéo. Original anglais ; sous-titres YouTube selon disponibilité.',explain:'Voir l’explication',hide:'Masquer l’explication',clips:[
+ ['L’ingénierie du vol','Pourquoi est-il difficile de produire de la portance dans un air très ténu ?','Les rotors ont moins de molécules d’air à déplacer. Au sol, la densité de l’air martien est proche de 1 % de celle de la Terre au niveau de la mer.'],
+ ['Les étapes de la mission','Ingenuity était prévu pour cinq vols d’essai au maximum. Combien en a-t-il accompli ?','Il a accompli 72 vols, bien au-delà du programme initial.'],
+ ['Un héritage durable','Comment une machine aide-t-elle la science après la fin de ses vols ?','Ses photos, ses données et ses leçons techniques aident à concevoir et exploiter de futurs explorateurs.']
+ ]},
+ es:{heading:'Clips pequeños. Grandes descubrimientos.',hint:'Elige un extracto de 30 segundos y pulsa Reproducir en el vídeo. Se detiene en su punto final. El enlace de YouTube abre el vídeo completo en ese momento.',watch:'Ver extracto',full:'Cargar vídeo NASA completo en línea',stop:'Cerrar vídeo',selected:'Extracto seleccionado',playerHint:'Pulsa Reproducir dentro del vídeo. Original en inglés; subtítulos de YouTube según disponibilidad.',explain:'Mostrar explicación',hide:'Ocultar explicación',clips:[
+ ['Ingeniería del vuelo','¿Por qué cuesta generar sustentación en aire muy tenue?','Hay menos moléculas de aire que los rotores puedan desplazar. La densidad del aire marciano superficial ronda el 1 % de la terrestre al nivel del mar.'],
+ ['Hitos de la misión','Ingenuity se diseñó para hasta cinco vuelos de prueba. ¿Cuántos completó?','Completó 72 vuelos, muchos más de los previstos inicialmente.'],
+ ['Un legado duradero','¿Cómo puede una máquina ayudar a la ciencia cuando ya no vuela?','Sus fotos, datos y lecciones de ingeniería ayudan a diseñar y operar futuros exploradores.']
+ ]},
+ 'zh-CN':{heading:'短片段，大发现。',hint:'选择30秒片段，再点击播放器中的播放按钮。片段在指定结束时间停止。YouTube链接从该时间打开完整视频。',watch:'观看片段',full:'加载NASA完整视频（在线）',stop:'关闭视频',selected:'已选片段',playerHint:'请点击视频中的播放按钮。原片为英语，YouTube字幕取决于是否提供。',explain:'显示解释',hide:'隐藏解释',clips:[
+ ['飞行工程','为什么在极稀薄的空气中很难产生升力？','旋翼能推动的空气分子更少。火星地表空气密度约为地球海平面的1%。'],
+ ['任务里程碑','机智号最初计划最多试飞五次，最终完成了多少次？','它完成了72次飞行，远超最初的演示计划。'],
+ ['持久的传承','机器停止飞行后，如何继续帮助科学研究？','它的照片、飞行数据和工程经验能帮助人们设计和操作未来的探险设备。']
+ ]}
+};
+for(const [language,text]of Object.entries(videoClipText))FLIGHT_LAB.text[language].excerpts=text;
+const excerptNotes={en:'Original English NASA video · online only. Questions, facts and the local photo story work offline.',ur:'ناسا کی اصل انگریزی ویڈیو — صرف آن لائن۔ سوالات، حقائق اور مقامی تصویری کہانی آف لائن بھی دستیاب ہیں۔',ps:'د ناسا اصلي انګلیسي ویډیو — یوازې آنلاین. پوښتنې، حقایق او انځوریزه کیسه بې انټرنېټه هم شته.',ar:'فيديو ناسا الأصلي بالإنجليزية · عبر الإنترنت فقط. تعمل الأسئلة والحقائق والقصة المصورة دون اتصال.',fr:'Vidéo NASA originale en anglais · en ligne uniquement. Questions, faits et récit photo accessibles hors connexion.',es:'Vídeo NASA original en inglés · solo en línea. Preguntas, datos y relato fotográfico disponibles sin conexión.','zh-CN':'NASA英语原版视频，仅限在线。问题、事实和本地图片故事可离线使用。'};
+for(const [language,note]of Object.entries(excerptNotes))FLIGHT_LAB.text[language].videoNote=note;

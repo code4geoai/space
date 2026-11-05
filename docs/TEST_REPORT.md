@@ -1,8 +1,12 @@
 # V5 test report
 
-**Date:** 4 November 2026 (Pakistan). **Result:** static checks passed; **19/19 main browser scenarios and 7/7 device-voice scenarios passed**. Browser: installed Google Chrome on Windows, automated with Playwright 1.64.1. Machine-readable results: [TEST_RESULTS.json](TEST_RESULTS.json) and [DEVICE_VOICE_RESULTS.json](DEVICE_VOICE_RESULTS.json).
+**Updated:** 5 November 2026 (Pakistan). **Result:** static checks passed; **19/19 main browser scenarios, 7/7 device-voice scenarios, 3/3 flight-lab scenarios and 4/4 short-excerpt scenarios passed**. Browser: installed Google Chrome on Windows, automated with Playwright 1.64.1. Machine-readable results: [TEST_RESULTS.json](TEST_RESULTS.json), [DEVICE_VOICE_RESULTS.json](DEVICE_VOICE_RESULTS.json), [FLIGHT_LAB_RESULTS.json](FLIGHT_LAB_RESULTS.json) and [VIDEO_CLIP_RESULTS.json](VIDEO_CLIP_RESULTS.json).
 
 **Flight-lab update:** Three additional browser scenarios passed: all seven translations and mobile RTL with proportional air-density bars; opt-in video at 1:55 with no autoplay and no overlapping local narration; and offline facts/story availability with an explicit online-only video message. Embed behaviour was tested with an intercepted test frame, not a claim that YouTube playback was watched or that the 1:55 segment was transcribed. See [FLIGHT_LAB_RESULTS.json](FLIGHT_LAB_RESULTS.json). Recording-script consistency checks include the new thin-air explanation in English, Urdu and Pashto.
+
+**Short-excerpt update:** Four browser scenarios cover the three absolute start/end pairs, 30-second durations, single-player selection, no autoplay, explanation toggles, all seven languages at 320 px, keyboard focus, video removal when narration/language/artifact changes, and offline questions without media requests. See [VIDEO_CLIPS.md](VIDEO_CLIPS.md) for exact ranges and source review.
+
+**Live-video boundary:** The public source page loaded, its 180-second duration/chapter metadata was read, and sampled frames were inspected. The separate embedded-media check did not finish buffering within the test window, so actual remote playback and automatic stop were **not** verified end-to-end. Controlled UI tests verify the configured start/end parameters against YouTube’s documented semantics, with a direct-source fallback link. Captions were not transcribed, and remote YouTube availability remains outside this static application’s control.
 
 | Coverage | Result |
 |---|---|
@@ -10,7 +14,7 @@
 | French, Spanish, Simplified Chinese | All six exhibit texts and localized cinematic subtitles present; draft notices present; local Chinese font loads. |
 | Narration pipeline | Temporary **test-only PCM audio response**, never shipped as student audio, verifies media-clock scene changes, pause/resume, speed, seek, completion and language cancellation. |
 | Default device narration until recording | Auto mode chooses an available student MP3; otherwise it uses a matching device voice. Waits for late voice discovery, cancels pending speech, handles pause/end races, reports silent engine failures, and falls back from a missing declared MP3 to a matching voice. All seven language mappings tested with explicit test doubles. |
-| Real Windows speech engine | In normal Windows permissions, actual Microsoft David English speech emitted start, sentence completion, and next-sentence start events. Microsoft David/Mark/Zira English voices are installed; no Urdu, Pashto or Arabic voice is exposed on this PC. Physical loudspeaker quality was not manually assessed. |
+| Real Windows speech engine | In normal Windows permissions, actual Microsoft David English speech emitted speech-start and sentence-completion events. Microsoft David/Mark/Zira English voices are installed; no Urdu, Pashto or Arabic voice is exposed on this PC. Physical loudspeaker quality was not manually assessed. |
 | Missing translation and voice fallback | Visible English-source notice, `lang=en`, correct source MP3 path. English-only device voices cannot speak Urdu/Pashto/Arabic stories. A missing story translation blocks audio until the visitor selects its source language. |
 | Offline museum | Complete cache readiness, then browser network disabled: reload in English/Urdu/Pashto/Arabic; local fonts/images, cinematic scenes, full-frame gallery and quizzes work. |
 | Classroom presentation | Fullscreen entry and exit work in automated Chrome. |
