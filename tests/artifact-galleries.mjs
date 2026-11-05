@@ -28,7 +28,7 @@ try{
     await page.waitForFunction(()=>{const image=document.querySelector('#largePhoto');return image.complete&&image.naturalWidth>0});
     assert.match(await page.locator('#largeSource').getAttribute('href'),/nasa.gov/);
     assert.ok((await page.locator('#largeCaption').innerText()).length>60);
-    await page.keyboard.press('Escape');await page.waitForFunction(i=>document.activeElement===document.querySelectorAll('#galleryItems button')[i],g,{timeout:5000});
+    await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('#photoDialog').open,{},{timeout:5000,polling:50});await page.waitForTimeout(150);assert.equal(await button.evaluate(e=>e===document.activeElement),true);
    }
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
   }
