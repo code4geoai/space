@@ -1,4 +1,4 @@
-# Space Archaeology V5
+# Digital Space Museum
 
 A student educational museum for the NASA Space Apps Challenge 2026, built from the existing V4 concept for Aliza. Six artifacts, seven language choices, authentic local NASA photographs, a five-scene Ingenuity story, quizzes, galleries, a local recording studio and classroom fullscreen. The public credits contain consent-aware placeholders; no student contributors or recordings are invented. Independent project, without NASA endorsement. Challenge participation or acceptance is not asserted.
 
@@ -61,7 +61,7 @@ The flight-lab and excerpt suites additionally check video selection, absolute c
 
 `npm run build` regenerates the cache and creates a clean `dist/` directory with deployable assets. Tooling, tests, V4 archive and browser dependencies are excluded. `docs/V4-baseline.html` preserves the original for reference, outside the deployed distribution.
 
-The supplied `Space-Archaeology-V5-deploy.zip` contains the deployable files. On Windows, recreate it after building with `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package.ps1`. To verify the actual build with an offline browser, run `node tests/smoke-dist.mjs`.
+The supplied `Digital-Space-Museum-deploy.zip` contains the deployable files. On Windows, recreate it after building with `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package.ps1`. To verify the actual build with an offline browser, run `node tests/smoke-dist.mjs`.
 
 ## GitHub Pages
 
