@@ -6,7 +6,7 @@ const server=spawn(process.execPath,['scripts/serve.mjs'],{env:{...process.env,P
 const results=[];
 try{
  for(let i=0;i<100;i++){try{if((await fetch('http://127.0.0.1:4185')).ok)break}catch{}await new Promise(r=>setTimeout(r,100))}
- browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+ const executablePath=process.platform==='win32'?'C:/Program Files/Google/Chrome/Application/chrome.exe':undefined;browser=await chromium.launch({executablePath,headless:true,args:['--no-sandbox']});
  const context=await browser.newContext({viewport:{width:390,height:844}}),page=await context.newPage();
  await page.goto('http://127.0.0.1:4185');await page.waitForFunction(()=>window.offlinePrepared===true,{},{timeout:90000});await page.reload();await context.setOffline(true);await page.reload();
  for(const lang of ['en','ur','ps','ar']){
