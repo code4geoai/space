@@ -237,6 +237,28 @@
   const ready=await navigator.serviceWorker.ready;const worker=ready.active||registration.active;
   if(worker){const channel=new MessageChannel();channel.port1.onmessage=e=>{window.offlinePrepared=e.data.ready;window.offlineFailed=!e.data.ready;updateOffline()};worker.postMessage({type:'CACHE_STATUS'},[channel.port2])}
  }).catch(()=>{window.offlineFailed=true;updateOffline()});
+ /* Slowly drifting stars behind the page. Decorative only: hidden from assistive technology,
+    frozen for visitors who prefer reduced motion, and paused while the tab is hidden. */
+ (function starfield(){
+  const canvas=document.createElement('canvas'),context=canvas.getContext('2d');if(!context)return;
+  canvas.id='stars';canvas.setAttribute('aria-hidden','true');document.body.prepend(canvas);
+  const still=matchMedia('(prefers-reduced-motion:reduce)');let stars=[],width=0,height=0,frame=0,previous=0;
+  function size(){
+   const ratio=Math.min(devicePixelRatio||1,1.5),changed=innerWidth!==width;width=innerWidth;height=innerHeight;canvas.width=width*ratio;canvas.height=height*ratio;context.setTransform(ratio,0,0,ratio,0,0);
+   if(changed)stars=Array.from({length:Math.min(260,Math.round(width*height/6000))},()=>({x:Math.random(),y:Math.random(),depth:.2+Math.random()*.8,phase:Math.random()*6.3}));
+  }
+  function draw(time){
+   context.clearRect(0,0,width,height);context.fillStyle='#f4f6ff';
+   for(const star of stars){
+    const x=(star.x*width-time*.006*star.depth)%width,y=(star.y*height-(time*.003+scrollY*.12)*star.depth)%height;
+    context.globalAlpha=(.3+.7*star.depth)*(.72+.28*Math.sin(time/1100+star.phase));context.beginPath();context.arc(x<0?x+width:x,y<0?y+height:y,.4+star.depth,0,6.3);context.fill();
+   }
+  }
+  function loop(time){frame=requestAnimationFrame(loop);if(time-previous>=33){previous=time;draw(time)}}
+  function start(){cancelAnimationFrame(frame);if(still.matches||document.hidden)draw(0);else frame=requestAnimationFrame(loop)}
+  size();start();
+  addEventListener('resize',()=>{size();start()});document.addEventListener('visibilitychange',start);still.addEventListener('change',start);
+ })();
  // A read-only hook lets browser tests inspect the same state the visitor sees.
  window.museum={getState:()=>({lang:state.lang,contentLang:state.contentLang,artifact:state.artifact?.id,scene:state.index,time:state.time,playing:state.playing,paused:state.paused,mode:state.mode})};
 })();

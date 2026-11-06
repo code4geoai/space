@@ -1,5 +1,5 @@
 {
-  "photographs": 24,
+  "photographs": 25,
   "fontFamilies": 3,
   "cinematicScenes": [
     "ingenuity",
@@ -32,7 +32,8 @@
         "rover",
         "rover-front",
         "rover-fender",
-        "rover-wide"
+        "rover-wide",
+        "rover-apollo15"
       ]
     },
     "reflector": {
@@ -96,34 +97,34 @@
       "kind": "photograph",
       "key": "apollo11",
       "file": "assets/images/apollo11.jpg",
-      "bytes": 285486,
-      "sha256": "548a744bbbfdb53e81c1decfcd1e26847267618767c35199fb4405f3cf224191",
+      "bytes": 367171,
+      "sha256": "633d3ce52e9f78d378e3c49fb02f804229c51a3102115e386cfa918c0e077905",
       "archiveId": "AS11-40-5927",
       "credit": "NASA",
-      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5927&mission=AS11&roll=40",
+      "source": "https://images.nasa.gov/details/as11-40-5927",
       "caption": "Eagle before ascent, July 1969. The gold-covered lower portion is the descent stage that stayed on the Moon; the complete lander is shown."
     },
     {
       "kind": "photograph",
       "key": "rover",
       "file": "assets/images/rover.jpg",
-      "bytes": 233278,
-      "sha256": "c0ba34df8f86c89232af50f095ee3fac0b7b0a80e87c0375bef6c29d75c70219",
+      "bytes": 297798,
+      "sha256": "8044a351572cb256dacb60e645853b92c247fe7befe166a16022a256889e1568",
       "archiveId": "AS17-147-22527",
       "credit": "NASA/Harrison Schmitt",
-      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=22527&mission=AS17&roll=147",
+      "source": "https://images.nasa.gov/details/as17-147-22527",
       "caption": "Eugene Cernan test-drives the Apollo 17 lunar rover beside the lunar module, December 1972."
     },
     {
       "kind": "photograph",
       "key": "reflector",
       "file": "assets/images/reflector.jpg",
-      "bytes": 444188,
-      "sha256": "c5ff0736fc675aedcbeb500ad0da3b26a7c2d7952b99cc15ab22c3a3bdec9021",
+      "bytes": 622562,
+      "sha256": "121ec36733d5380005d1e902da87c22f861f8eaf7e18f624f4562dc067c8c83d",
       "archiveId": "AS11-40-5952",
       "credit": "NASA/Neil Armstrong",
       "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5952&mission=AS11&roll=40",
-      "caption": "Apollo 11 laser ranging retroreflector deployed on the lunar surface, July 1969."
+      "caption": "Apollo 11 laser ranging retroreflector deployed on the lunar surface, July 1969. Colour balance and film borders adjusted by this project; no content changed."
     },
     {
       "kind": "photograph",
@@ -195,11 +196,11 @@
       "kind": "photograph",
       "key": "apollo11-footpad",
       "file": "assets/images/apollo11-footpad.jpg",
-      "bytes": 377691,
-      "sha256": "3ff5d2e735163f6b32b3ff35aa7a902f6a51b82b9d1a347617f9d66879219e02",
+      "bytes": 599158,
+      "sha256": "d825d29c8e48458eaaa64cdfecc0526a4c297cd1ea2aa2af2ccaeece0811cd0c",
       "archiveId": "AS11-40-5917",
       "credit": "NASA/Buzz Aldrin",
-      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5917&mission=AS11&roll=40",
+      "source": "https://images.nasa.gov/details/as11-40-5917",
       "caption": "Apollo 11 lunar-module footpad and contact probe on the lunar surface, July 1969. A close view of hardware belonging to Eagle’s descent stage."
     },
     {
@@ -239,45 +240,56 @@
       "kind": "photograph",
       "key": "rover-fender",
       "file": "assets/images/rover-fender.jpg",
-      "bytes": 391606,
-      "sha256": "43fee67c1e36bee910cf734d867700f0a5fc6d69b9d619254e449e8f865af397",
+      "bytes": 489171,
+      "sha256": "d59080b79fc65f9b7b180c0b730b78ac0a75addd2ea969d70c2eff0240218a91",
       "archiveId": "AS17-137-20979",
       "credit": "NASA/Eugene Cernan",
-      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=20979&mission=AS17&roll=137",
+      "source": "https://images.nasa.gov/details/as17-137-20979",
       "caption": "Apollo 17 rover fender repair using maps and clamps, documented at Station 2. A close-up of the actual lunar rover, December 1972."
     },
     {
       "kind": "photograph",
       "key": "rover-wide",
       "file": "assets/images/rover-wide.jpg",
-      "bytes": 210926,
-      "sha256": "0b82d4a7a6c768d541acaf52a6e27bff5bb83e8b79970df7d69ff46868de667c",
+      "bytes": 366881,
+      "sha256": "a7ac00dc24efa2305c8cbc11a92b6cf21f9e639c85b968300b62fd2961c28a32",
       "archiveId": "AS17-134-20435",
       "credit": "NASA/Eugene Cernan",
-      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=20435&mission=AS17&roll=134",
+      "source": "https://images.nasa.gov/details/as17-134-20435",
       "caption": "Wide Apollo 17 landing-site photograph with the lunar rover in the background and surface-experiment equipment in the foreground. Context view; the rover is small in this frame."
+    },
+    {
+      "kind": "photograph",
+      "key": "rover-apollo15",
+      "file": "assets/images/rover-apollo15.jpg",
+      "bytes": 481844,
+      "sha256": "6d314d8a4f75c086439d9f1297968330ab55d53b5635b1d34632ca6154a70354",
+      "archiveId": "AS15-88-11901",
+      "credit": "NASA",
+      "source": "https://images.nasa.gov/details/as15-88-11901",
+      "caption": "Related mission: the Apollo 15 lunar rover at the Hadley-Apennine landing site, 1971. This is a different rover from the Apollo 17 rover telling this story."
     },
     {
       "kind": "photograph",
       "key": "reflector-carry",
       "file": "assets/images/reflector-carry.jpg",
-      "bytes": 321071,
-      "sha256": "f9022d19661aec3eec02a0f6cbd6e039cd353de45825a54121d8789037571a39",
+      "bytes": 385746,
+      "sha256": "2f904f1a2a7aaf11b79c83a4bade9eb4eaa5a2d866b33dc887bdd5b47a31ae5b",
       "archiveId": "AS11-40-5942",
       "credit": "NASA/Neil Armstrong",
-      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5942&mission=AS11&roll=40",
+      "source": "https://images.nasa.gov/details/as11-40-5942",
       "caption": "Buzz Aldrin carries the laser retroreflector in his right hand and the passive seismometer in his left, during Apollo 11 experiment deployment in July 1969."
     },
     {
       "kind": "photograph",
       "key": "reflector-context",
       "file": "assets/images/reflector-context.jpg",
-      "bytes": 366540,
-      "sha256": "3ce7c4602f6ea5fcd666b5b6d3e6dfbcc01517cb3e38161bfa86a97a3fb4d68c",
-      "archiveId": "AS11-40-5946",
+      "bytes": 493612,
+      "sha256": "dae49fadc007726929c4c9ad52971177d2f78a6eaff84f19aa9b581771acfae8",
+      "archiveId": "AS11-40-5948",
       "credit": "NASA/Neil Armstrong",
-      "source": "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?frame=5946&mission=AS11&roll=40",
-      "caption": "Apollo 11 experiment-deployment view: Aldrin works on the seismometer; the laser reflector is to his left. The instrument he is handling is the seismometer, not the reflector."
+      "source": "https://images.nasa.gov/details/as11-40-5948",
+      "caption": "Buzz Aldrin after setting out the Apollo 11 experiments, July 1969. The copper seismometer is in the foreground; the laser reflector is the white instrument behind it. The speaking artifact is the reflector, not the seismometer."
     },
     {
       "kind": "photograph",

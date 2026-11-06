@@ -100,7 +100,7 @@ window.QUIZ_FLIGHTS={en:'How many flights did Ingenuity complete?',ur:'انجی�
    related instrument or a different camera view is the speaking artifact. */
 const artifactPhotoSets={
  apollo11:{scenes:['apollo11','apollo11-footpad','apollo11-ladder'],gallery:['apollo11','apollo11-footpad','apollo11-engine','apollo11-ladder']},
- rover:{scenes:['rover','rover-front','rover-fender'],gallery:['rover','rover-front','rover-fender','rover-wide']},
+ rover:{scenes:['rover','rover-front','rover-fender'],gallery:['rover','rover-front','rover-fender','rover-wide','rover-apollo15']},
  reflector:{scenes:['reflector','reflector-carry','reflector-context'],gallery:['reflector','reflector-carry','reflector-context','reflector-apollo15']},
  opportunity:{scenes:['opportunity-panels','opportunity-shadow','opportunity-tracks'],gallery:['opportunity-panels','opportunity-shadow','opportunity-tracks','opportunity']},
  debris:{scenes:['debris','debris-ground','debris-aerial'],gallery:['debris','debris-ground','debris-aerial','debris-heatshield']}

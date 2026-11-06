@@ -8,7 +8,7 @@ try{
  for(let i=0;i<100;i++){try{if((await fetch('http://127.0.0.1:4185')).ok)break}catch{}await new Promise(r=>setTimeout(r,100))}
  const executablePath=process.platform==='win32'?'C:/Program Files/Google/Chrome/Application/chrome.exe':undefined;browser=await chromium.launch({executablePath,headless:true,args:['--no-sandbox']});
  const context=await browser.newContext({viewport:{width:390,height:844}}),page=await context.newPage();
- await page.goto('http://127.0.0.1:4185');await page.waitForFunction(()=>window.offlinePrepared===true,{},{timeout:90000});await page.reload();await context.setOffline(true);await page.reload();
+ await page.goto('http://127.0.0.1:4185');assert.equal(await page.locator('#stars').count(),1);assert.equal(await page.locator('#stars').evaluate(c=>getComputedStyle(c).pointerEvents),'none');await page.waitForFunction(()=>window.offlinePrepared===true,{},{timeout:90000});await page.reload();await context.setOffline(true);await page.reload();
  for(const lang of ['en','ur','ps','ar']){
   await page.locator('#language').selectOption(lang);
   for(let i=0;i<6;i++){
@@ -25,7 +25,7 @@ try{
     if(s===0){await page.locator('#enlarge').click();await page.waitForFunction(()=>document.querySelector('#photoDialog').open);assert.equal(await page.locator('#largePhoto').getAttribute('src'),await page.locator('#sceneImage').getAttribute('src'));await page.locator('#zoomPhoto').click();assert.ok(await page.locator('#largePhoto').evaluate(e=>Math.abs(e.getBoundingClientRect().width-e.naturalWidth)<2),'Zoom shows full detail');await page.locator('#zoomPhoto').click();await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('#photoDialog').open,{},{timeout:5000,polling:50});await page.waitForTimeout(150);assert.equal(await page.locator('#enlarge').evaluate(e=>e===document.activeElement),true)}
    }
    assert.equal(images.size,expected);
-   const count=id==='ingenuity'?5:4;assert.equal(await page.locator('#galleryItems button').count(),count);
+   const count=id==='ingenuity'||id==='rover'?5:4;assert.equal(await page.locator('#galleryItems button').count(),count);
    for(let g=0;g<count;g++){
     const button=page.locator('#galleryItems button').nth(g);await button.focus();await page.keyboard.press('Enter');
     await page.waitForFunction(()=>{const image=document.querySelector('#largePhoto');return image.complete&&image.naturalWidth>0});

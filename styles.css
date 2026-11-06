@@ -168,3 +168,11 @@ html[lang=ur] .clip-button strong,html[lang=ur] .clip-learning h4{line-height:2.
  #stageControls button,#stageControls select{min-height:36px;padding-block:2px}
  #stageControls .status{margin-block:4px 0;min-height:0;font-size:11px}
 }
+
+/* The drifting starfield sits behind everything, so the page gradient moves to the root element. */
+html{background:radial-gradient(ellipse at 75% 4%,#263d67 0%,#080f22 50%),#080f22}
+body{background:none}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+/* Near-square Moon photographs: keep the machine, not the empty sky, in the card crop. */
+.card-photo{object-position:center 68%}
