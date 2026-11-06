@@ -36,8 +36,8 @@ try{
   await page.locator('[data-world=moon]').click();assert.equal(await page.locator('.card').count(),3);await page.locator('[data-world=mars]').click();assert.equal(await page.locator('.card').count(),3);
   await page.locator('#start').click();await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:`test-results/${l}-${device}.png`,fullPage:true});await page.screenshot({path:`test-results/${l}-${device}-hero.png`});assert.deepEqual(errors,[]);await context.close();
  });
- await run('French, Spanish and Chinese: complete exhibit content and loaded local Chinese font',async()=>{
-  const page=await browser.newPage();for(const l of ['fr','es','zh-CN']){await open(page,l);await story(page);assert.equal(await page.locator('#subtitle').getAttribute('lang'),l);assert.ok(await page.locator('#reviewNote').innerText());assert.equal(await page.locator('.card').count(),6)}assert.ok(await page.evaluate(()=>[...document.fonts].some(f=>f.family==='Chinese'&&f.status==='loaded')));await page.close();
+ await run('French and Spanish: complete exhibit content',async()=>{
+  const page=await browser.newPage();for(const l of ['fr','es']){await open(page,l);await story(page);assert.equal(await page.locator('#subtitle').getAttribute('lang'),l);assert.ok(await page.locator('#reviewNote').innerText());assert.equal(await page.locator('.card').count(),6)}await page.close();
  });
  await run('MP3 pipeline: real media clock, cue changes, speed, seek, pause and language cancellation',async()=>{
   const context=await browser.newContext({serviceWorkers:'block'}),page=await context.newPage();await open(page);await story(page);await page.route('**/audio/en/ingenuity.mp3',route=>route.fulfill({status:200,contentType:'audio/wav',body:fixtureAudio()}));

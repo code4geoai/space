@@ -53,11 +53,9 @@ $fonts = @{
  'NotoNastaliqUrdu.ttf'='https://raw.githubusercontent.com/google/fonts/main/ofl/notonastaliqurdu/NotoNastaliqUrdu%5Bwght%5D.ttf'
  'NotoNaskhArabic.ttf'='https://raw.githubusercontent.com/google/fonts/main/ofl/notonaskharabic/NotoNaskhArabic%5Bwght%5D.ttf'
  'Inter.ttf'='https://raw.githubusercontent.com/google/fonts/main/ofl/inter/Inter%5Bopsz,wght%5D.ttf'
- 'NotoSansSC.ttf'='https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssc/NotoSansSC%5Bwght%5D.ttf'
  'Nastaliq-OFL.txt'='https://raw.githubusercontent.com/google/fonts/main/ofl/notonastaliqurdu/OFL.txt'
  'Naskh-OFL.txt'='https://raw.githubusercontent.com/google/fonts/main/ofl/notonaskharabic/OFL.txt'
  'Inter-OFL.txt'='https://raw.githubusercontent.com/google/fonts/main/ofl/inter/OFL.txt'
- 'Chinese-OFL.txt'='https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssc/OFL.txt'
 }
 foreach ($entry in $fonts.GetEnumerator()) {
  $output=Join-Path $fontDir $entry.Key

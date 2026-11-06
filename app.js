@@ -39,7 +39,7 @@
  function deviceVoices(){try{return window.speechSynthesis?.getVoices()??[]}catch{return []}}
  function matchingVoice(){
   const language=state.contentLang.toLowerCase(),base=language.split('-')[0],normalize=v=>v.lang.toLowerCase().replaceAll('_','-');
-  const matches=deviceVoices().filter(v=>language==='zh-cn'?['zh-cn','zh-sg','zh-hans','cmn-cn'].includes(normalize(v))||normalize(v).startsWith('zh-hans-'):normalize(v).split('-')[0]===base);
+  const matches=deviceVoices().filter(v=>normalize(v).split('-')[0]===base);
   return matches.find(v=>normalize(v)===language&&v.localService)??matches.find(v=>v.localService)??matches.find(v=>normalize(v)===language)??matches[0];
  }
  function voiceAvailability(){

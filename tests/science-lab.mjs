@@ -2,7 +2,7 @@ import {chromium} from 'playwright';
 import {spawn} from 'node:child_process';
 import {access,writeFile,mkdir,readFile} from 'node:fs/promises';
 import assert from 'node:assert/strict';
-const base='http://127.0.0.1:4180',ids=['apollo11','rover','reflector','opportunity','ingenuity','debris'],languages=['en','ur','ps','ar','fr','es','zh-CN'];
+const base='http://127.0.0.1:4180',ids=['apollo11','rover','reflector','opportunity','ingenuity','debris'],languages=['en','ur','ps','ar','fr','es'];
 const server=spawn(process.execPath,['scripts/serve.mjs'],{env:{...process.env,PORT:'4180'},stdio:'pipe'});const results=[];let browser;
 async function run(name,task){try{await task();results.push({name,status:'PASS'});console.log('PASS',name)}catch(error){results.push({name,status:'FAIL',error:error.message});console.error('FAIL',name,error.message)}}
 const open=(page,id)=>page.evaluate(id=>{[...document.querySelectorAll('#cards button')][ARTIFACTS.findIndex(a=>a.id===id)].click()},id);
@@ -12,7 +12,7 @@ try{
  for(let i=0;i<100;i++){try{if((await fetch(base)).ok)break}catch{}await new Promise(r=>setTimeout(r,100))}
  let executablePath;if(process.platform==='win32')for(const p of ['C:/Program Files/Google/Chrome/Application/chrome.exe','C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe']){try{await access(p);executablePath=p;break}catch{}}
  browser=await chromium.launch({executablePath,headless:true});
- await run('Every exhibit shows its science panel in all seven languages without overflow at 320 px and desktop',async()=>{
+ await run('Every exhibit shows its science panel in all six languages without overflow at 320 px and desktop',async()=>{
   for(const viewport of [{width:320,height:800},{width:1440,height:1000}]){
    const context=await browser.newContext({viewport,serviceWorkers:'block'}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(base);
    for(const language of languages){await page.selectOption('#language',language);for(const id of ids){await open(page,id);

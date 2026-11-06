@@ -2,7 +2,7 @@
 
 Updated on 5 November 2026.
 
-The completed V5 work includes the restored V4 blue/orange theme, local NASA images and fonts, seven-language content, narration fallback, offline support, classroom presentation, recording scripts, and the Ingenuity flight-science panel. No student recordings have been supplied; translations remain marked unreviewed.
+The completed V5 work includes the restored V4 blue/orange theme, local NASA images and fonts, six-language content, narration fallback, offline support, classroom presentation, recording scripts, and the Ingenuity flight-science panel. No student recordings have been supplied; translations remain marked unreviewed.
 
 ## Completed enhancement
 

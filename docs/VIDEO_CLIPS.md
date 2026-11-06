@@ -25,4 +25,4 @@ Questions and explanations use the independently cited NASA facts in [SOURCES.md
 
 ## Verification
 
-`node tests/video-clips.mjs` checks all start/end values, one-player behaviour, no autoplay, questions, keyboard operation, minimum player height, all seven languages at 320 px, narration cleanup and offline access. Automated UI tests intercept the iframe with a test response; they do not claim to test YouTube’s remote media delivery. Live-player verification is recorded separately in the test report, including any environmental limits.
+`node tests/video-clips.mjs` checks all start/end values, one-player behaviour, no autoplay, questions, keyboard operation, minimum player height, all six languages at 320 px, narration cleanup and offline access. Automated UI tests intercept the iframe with a test response; they do not claim to test YouTube’s remote media delivery. Live-player verification is recorded separately in the test report, including any environmental limits.

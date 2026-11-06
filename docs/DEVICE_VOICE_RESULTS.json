@@ -9,11 +9,11 @@
       "status": "PASS"
     },
     {
-      "name": "All seven story languages use matching device voices and cancel on language change",
+      "name": "All six story languages use matching device voices and cancel on language change",
       "status": "PASS"
     },
     {
-      "name": "Unavailable language and Cantonese voice never substitute for Urdu or Simplified Chinese",
+      "name": "Unavailable language voice never substitutes for Urdu",
       "status": "PASS"
     },
     {

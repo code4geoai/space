@@ -38,7 +38,7 @@ The word **بہتر** in the final segment means seventy-two here; verify its re
 
 1. Review `data/content.js` with a fluent speaker and a teacher. Record the five story segments only, in order; do not read headings unless you also include their duration in cues. Leave natural pauses. Use a quiet room and a comfortable pace. Timing is measured after recording, rather than forcing a child to match a timer.
 2. The local recorder requires HTTPS or localhost and microphone permission. It downloads WebM (or Ogg if the browser provides it). It does not upload. Convert to actual MP3 in a trusted audio editor; renaming a WebM file is insufficient. An external recorder is equally suitable.
-3. Export mono MP3 at 96–128 kbps. Trim long silence and avoid clipping. Listen to the complete result with the narrator and guardian. Save at the exact path above; six artifact IDs are `apollo11`, `rover`, `reflector`, `opportunity`, `ingenuity`, `debris`. Other supported language folders are `ar`, `fr`, `es`, `zh-CN`.
+3. Export mono MP3 at 96–128 kbps. Trim long silence and avoid clipping. Listen to the complete result with the narrator and guardian. Save at the exact path above; six artifact IDs are `apollo11`, `rover`, `reflector`, `opportunity`, `ingenuity`, `debris`. Other supported language folders are `ar`, `fr`, `es`.
 4. In `data/media.js`, add a recording entry (the following is a **schema example, not a claim that an MP3 exists**):
 
 ```js
