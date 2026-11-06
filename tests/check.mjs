@@ -9,7 +9,7 @@ for(const file of ['data/ui.js','data/content.js','data/flight-lab.js','data/sci
  Object.assign(context,context.window);vm.runInContext(await readFile(file,'utf8'),context,{filename:file});
 }
 Object.assign(context,context.window);
-const {ARTIFACTS,UI,LANGUAGES,INGENUITY_SCENES,PHOTOS,AUDIO,FLIGHT_LAB,SCIENCE}=context.window;
+const {ARTIFACTS,UI,LANGUAGES,INGENUITY_SCENES,STORY_SCENES,PHOTOS,AUDIO,FLIGHT_LAB,SCIENCE}=context.window;
 for(const a of ARTIFACTS){assert.equal(SCIENCE.metrics[a.id].length,2);assert.ok(SCIENCE.sources[a.id].length);for(const [,url]of SCIENCE.sources[a.id])assert.ok(url.includes('nasa.gov'))}
 for(const [,url]of SCIENCE.laser.sources)assert.ok(url.includes('nasa.gov'));
 for(const l of Object.keys(LANGUAGES)){const s=SCIENCE.text[l];assert.ok(s?.eyebrow&&s.title,`Missing science text: ${l}`);assert.deepEqual(Object.keys(s.laser),Object.keys(SCIENCE.text.en.laser));assert.ok(s.laser.drift.includes('{m}'));for(const a of ARTIFACTS){assert.equal(s.exhibits[a.id].length,3);assert.ok(s.exhibits[a.id].every(Boolean))}}
@@ -27,19 +27,19 @@ for(const l of Object.keys(LANGUAGES)){
  const excerpts=FLIGHT_LAB.text[l].excerpts;assert.equal(excerpts.clips.length,3);for(const row of excerpts.clips)assert.ok(row.length===3&&row.every(text=>typeof text==='string'&&text.length>0));
  for(const [key,value]of Object.entries(UI[l]))assert.equal(typeof value,'string',`Undefined UI ${l}/${key}`);
  assert.equal(INGENUITY_SCENES[l].length,5);
- for(const a of ARTIFACTS){assert.ok(a.text[l]?.every(Boolean),`Missing content ${l}/${a.id}`);assert.equal(a.text[l].length,3)}
+ for(const a of ARTIFACTS){assert.ok(a.text[l]?.every(Boolean),`Missing content ${l}/${a.id}`);assert.equal(a.text[l].length,2);if(a.id!=='ingenuity'){const scenes=STORY_SCENES[a.id]?.[l];assert.equal(scenes?.length,a.scenePhotos.length,`Story sections ${l}/${a.id}`);assert.ok(scenes.every(row=>row.length===2&&row.every(Boolean)))}}
 }
 for(const [key,p]of Object.entries(PHOTOS)){
  const data=await readFile('assets/images/'+p.file);assert.ok(data.length>3000);assert.equal(data[0],255);assert.equal(data[1],216);assert.ok(/nasa\.gov/.test(p.source),`Non-NASA source ${key}`);assert.ok(p.credit.startsWith('NASA'));
 }
 for(const file of ['Inter.ttf','NotoNastaliqUrdu.ttf','NotoNaskhArabic.ttf'])assert.ok((await stat('assets/fonts/'+file)).size>30000);
-for(const a of ARTIFACTS){assert.ok(PHOTOS[a.photo]);for(const [,url]of a.sources)assert.ok(url.includes('nasa.gov'));assert.ok(['moon','mars'].includes(a.world));for(const key of [...a.scenePhotos,...(a.galleryPhotos??[])])assert.ok(PHOTOS[key]);assert.ok((a.galleryPhotos??a.scenePhotos).length>=4);if(a.id!=='ingenuity')for(const [language,text]of Object.entries(a.text))assert.equal((text[2].match(/[^.!?۔؟。！？]+[.!?۔؟。！？]*/gu)??[text[2]]).filter(s=>s.trim()).length,a.scenePhotos.length,`Scene/sentence mismatch: ${a.id}/${language}`)}
+for(const a of ARTIFACTS){assert.ok(PHOTOS[a.photo]);for(const [,url]of a.sources)assert.ok(url.includes('nasa.gov'));assert.ok(['moon','mars'].includes(a.world));for(const key of [...a.scenePhotos,...(a.galleryPhotos??[])])assert.ok(PHOTOS[key]);assert.ok((a.galleryPhotos??a.scenePhotos).length>=4);}
 for(const [key,r]of Object.entries(AUDIO.recordings)){
  const [l,id]=key.split('/');assert.ok(LANGUAGES[l]);const a=ARTIFACTS.find(a=>a.id===id);assert.ok(a);if(!r.available)continue;
  assert.equal(r.file,`audio/${l}/${id}.mp3`);assert.ok((await stat(r.file)).size>1000);assert.equal(r.cues.length,a.scenePhotos.length);assert.equal(r.cues[0],0);assert.ok(r.cues.every((v,i)=>Number.isFinite(v)&&(i===0||v>r.cues[i-1])));assert.ok(r.duration>r.cues.at(-1));
 }
 const scripts=await readFile('docs/RECORDING_SCRIPTS.md','utf8');
-for(const l of ['en','ur','ps'])for(const [,text]of INGENUITY_SCENES[l])assert.ok(scripts.includes(text),`Recording script drift: ${l}`);
+for(const l of ['en','ur','ps'])for(const scenes of [INGENUITY_SCENES[l],...Object.values(STORY_SCENES).map(story=>story[l])])for(const [,text]of scenes)assert.ok(scripts.includes(text),`Recording script drift: ${l}`);
 for(const fontLicense of ['Inter-OFL.txt','Naskh-OFL.txt','Nastaliq-OFL.txt'])assert.ok((await readFile('assets/fonts/'+fontLicense,'utf8')).includes('OPEN FONT LICENSE'));
 assert.ok(html.includes('width=device-width'));assert.ok(!html.includes('autoplay'));
 assert.equal(FLIGHT_LAB.video.id,'hW5akI5Rnyg');assert.equal(FLIGHT_LAB.video.start,115);for(const [,source]of FLIGHT_LAB.sources)assert.ok(source.includes('nasa.gov'));

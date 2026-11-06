@@ -37,8 +37,8 @@
     },
     "reflector": {
       "scenes": [
-        "reflector-carry",
         "reflector",
+        "reflector-carry",
         "reflector-context"
       ],
       "gallery": [

@@ -20,6 +20,9 @@ try{
     await page.locator('#sceneNav button').nth(s).click();
     await page.waitForFunction(()=>{const image=document.querySelector('#sceneImage');return image.complete&&image.naturalWidth>0});
     images.add(await page.locator('#sceneImage').getAttribute('src'));
+    const caption=await page.evaluate(()=>{const a=document.querySelector('#subtitle').getBoundingClientRect(),b=document.querySelector('#sceneImage').getBoundingClientRect();return {clear:a.top>=b.bottom||a.left>=b.right||b.left>=a.right,shown:[...document.querySelectorAll('#subtitle span')].filter(span=>getComputedStyle(span).visibility==='visible').length}});
+    assert.ok(caption.clear,'Caption must not cover the photograph');assert.equal(caption.shown,1,'One sentence at a time');
+    if(s===0){await page.locator('#enlarge').click();await page.waitForFunction(()=>document.querySelector('#photoDialog').open);assert.equal(await page.locator('#largePhoto').getAttribute('src'),await page.locator('#sceneImage').getAttribute('src'));await page.locator('#zoomPhoto').click();assert.ok(await page.locator('#largePhoto').evaluate(e=>Math.abs(e.getBoundingClientRect().width-e.naturalWidth)<2),'Zoom shows full detail');await page.locator('#zoomPhoto').click();await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('#photoDialog').open,{},{timeout:5000,polling:50});await page.waitForTimeout(150);assert.equal(await page.locator('#enlarge').evaluate(e=>e===document.activeElement),true)}
    }
    assert.equal(images.size,expected);
    const count=id==='ingenuity'?5:4;assert.equal(await page.locator('#galleryItems button').count(),count);

@@ -58,15 +58,17 @@
    state.voiceWaitCancel=cancel;synth.addEventListener('voiceschanged',check);check();
   });
  }
+ const sentencesOf=text=>text.match(/(?:\d\.\d|[^.!?۔؟。！？])+[.!?۔؟。！？]*/gu)??[text];
  function validRecording(r){return !!(r?.available&&r.file===`audio/${state.contentLang}/${state.artifact.id}.mp3`&&Array.isArray(r.cues)&&r.cues.length===state.scenes.length&&r.cues[0]===0&&r.cues.every((n,i)=>Number.isFinite(n)&&(i===0||n>r.cues[i-1]))&&Number.isFinite(r.duration)&&r.duration>r.cues.at(-1))}
- function resetTimeline(){const r=recording();state.duration=validRecording(r)?r.duration:state.scenes.length*12;state.time=0;state.index=-1;state.scenes.forEach((scene,i)=>{scene.start=validRecording(r)?r.cues[i]:i*12});paint()}
+ function resetTimeline(){const r=recording();const seconds=state.artifact.id==='ingenuity'?12:20;state.duration=validRecording(r)?r.duration:state.scenes.length*seconds;state.time=0;state.index=-1;state.sentence=-1;state.scenes.forEach((scene,i)=>{scene.start=validRecording(r)?r.cues[i]:i*seconds});paint()}
  function openArtifact(id,focus=true){
   if(!canChange())return;stopPlayback();const a=ARTIFACTS.find(a=>a.id===id);if(!a)return;state.artifact=a;
   const {language,value}=textFor(a);state.contentLang=language;$('exhibit').hidden=false;$('storyTitle').textContent=value[0];$('storyTitle').lang=language;$('storyTitle').dir=LANGUAGES[language].dir;
-  const sentences=(value[2].match(/[^.!?۔؟。！？]+[.!?۔؟。！？]*/gu)??[value[2]]).map(sentence=>sentence.trim()).filter(Boolean);
-  const scenes=a.id==='ingenuity'?(INGENUITY_SCENES[language]||INGENUITY_SCENES.en):a.scenePhotos?.length>1?sentences.map(sentence=>[value[0],sentence]):[[value[0],value[2]]];
-  state.scenes=scenes.map(([title,text],i)=>({title,text,photo:a.scenePhotos?.[i]??a.photo,start:i*12}));
-  $('facts').textContent=value[1];$('facts').lang=language;$('facts').dir=LANGUAGES[language].dir;
+  const scenes=a.id==='ingenuity'?INGENUITY_SCENES[language]:STORY_SCENES[a.id][language];
+  let first=0;state.scenes=scenes.map(([title,text],i)=>{const parts=sentencesOf(text),scene={title,text,parts,first,photo:a.scenePhotos?.[i]??a.photo,start:i*12};first+=parts.length;return scene});
+  /* Every sentence shares one grid cell, so the caption keeps the height of the longest and the controls stay still. */
+  $('subtitle').replaceChildren(...state.scenes.flatMap(scene=>scene.parts.map(part=>{const span=document.createElement('span');span.textContent=part.trim();return span})));
+  $('enlarge').setAttribute('aria-label',t('gallery'));$('facts').textContent=value[1];$('facts').lang=language;$('facts').dir=LANGUAGES[language].dir;
   $('transcript').replaceChildren();state.scenes.forEach(scene=>{const p=document.createElement('p');p.textContent=scene.text;p.lang=language;p.dir=LANGUAGES[language].dir;$('transcript').append(p)});
   $('contentNotice').textContent=language!==state.lang?t('englishFallback'):(language==='en'?t('reviewSource'):t('review'));
   $('sources').replaceChildren();a.sources.forEach(([title,url])=>{const link=document.createElement('a');link.href=url;link.target='_blank';link.rel='noopener';link.lang='en';link.dir='ltr';link.textContent=title+' ↗';$('sources').append(link)});
@@ -78,8 +80,10 @@
   label($('recordingState'),validRecording(recording())?'recordReady':'recordNeeded');$('recordingPath').textContent=`audio/${state.contentLang}/${state.artifact.id}.mp3`;
   label($('play'),$('audioMode').value==='visual'?'play':'playNarration');voiceAvailability();
  }
+ function zoomLarge(on){$('zoomPhoto').classList.toggle('zoomed',on);$('zoomPhoto').setAttribute('aria-pressed',String(on))}
+ function openLarge(key,from){galleryReturn=from;zoomLarge(false);$('zoomPhoto').setAttribute('aria-label',t('gallery'));setImage($('largePhoto'),key);$('largeCaption').textContent=caption(key);$('largeCaption').lang='en';$('largeCaption').dir='ltr';$('largeSource').href=PHOTOS[key].source;$('photoDialog').showModal()}
  function renderGallery(){
-  $('galleryItems').replaceChildren();for(const key of [...new Set(state.artifact.galleryPhotos??state.scenes.map(s=>s.photo))]){const b=document.createElement('button');b.setAttribute('aria-label',t('galleryLabel')+': '+(PHOTOS[key].label??PHOTOS[key].id));const img=document.createElement('img');img.loading='lazy';img.width=300;img.height=200;setImage(img,key);const span=document.createElement('span');span.lang='en';span.dir='ltr';span.textContent=(PHOTOS[key].label?PHOTOS[key].label+' · ':'')+PHOTOS[key].id+' · '+PHOTOS[key].credit;b.append(img,span);b.onclick=()=>{galleryReturn=b;setImage($('largePhoto'),key);$('largeCaption').textContent=caption(key);$('largeCaption').lang='en';$('largeCaption').dir='ltr';$('largeSource').href=PHOTOS[key].source;$('photoDialog').showModal()};$('galleryItems').append(b)}
+  $('galleryItems').replaceChildren();for(const key of [...new Set(state.artifact.galleryPhotos??state.scenes.map(s=>s.photo))]){const b=document.createElement('button');b.setAttribute('aria-label',t('galleryLabel')+': '+(PHOTOS[key].label??PHOTOS[key].id));const img=document.createElement('img');img.loading='lazy';img.width=300;img.height=200;setImage(img,key);const span=document.createElement('span');span.lang='en';span.dir='ltr';span.textContent=(PHOTOS[key].label?PHOTOS[key].label+' · ':'')+PHOTOS[key].id+' · '+PHOTOS[key].credit;b.append(img,span);b.onclick=()=>openLarge(key,b);$('galleryItems').append(b)}
  }
  function renderQuiz(){
   const a=state.artifact;$('question').textContent=a.quiz.key==='flights'?QUIZ_FLIGHTS[state.lang]:t('question');$('answers').replaceChildren();$('feedback').textContent='';
@@ -128,7 +132,10 @@
  function paint(){
   if(!state.scenes.length)return;
   let index=0;state.scenes.forEach((s,i)=>{if(state.time>=s.start)index=i});
-  if(index!==state.index){state.index=index;const s=state.scenes[index];setImage($('sceneImage'),s.photo);$('sceneCaption').textContent=PHOTOS[s.photo].credit+' · '+PHOTOS[s.photo].id+' · '+t('photoNote');$('sceneCaption').lang='en';$('sceneCaption').dir='ltr';$('sceneTitle').textContent=s.title;$('subtitle').textContent=s.text;for(const id of ['sceneTitle','subtitle']){$(id).lang=state.contentLang;$(id).dir=LANGUAGES[state.contentLang].dir}$('sceneCount').textContent=String(index+1).padStart(2,'0')+' / '+String(state.scenes.length).padStart(2,'0');[...$('sceneNav').children].forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)))}
+  if(index!==state.index){state.index=index;const s=state.scenes[index];setImage($('sceneImage'),s.photo);$('sceneCaption').textContent=PHOTOS[s.photo].credit+' · '+PHOTOS[s.photo].id+' · '+t('photoNote');$('sceneCaption').lang='en';$('sceneCaption').dir='ltr';$('sceneTitle').textContent=s.title;for(const id of ['sceneTitle','subtitle']){$(id).lang=state.contentLang;$(id).dir=LANGUAGES[state.contentLang].dir}$('sceneCount').textContent=String(index+1).padStart(2,'0')+' / '+String(state.scenes.length).padStart(2,'0');[...$('sceneNav').children].forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)))}
+  const scene=state.scenes[index],sceneEnd=state.scenes[index+1]?.start??state.duration,reached=(state.time-scene.start)/(sceneEnd-scene.start)*scene.text.length;
+  let sentence=0,offset=0;scene.parts.forEach((part,i)=>{if(offset<=reached+.01)sentence=i;offset+=part.length});
+  if(scene.first+sentence!==state.sentence){state.sentence=scene.first+sentence;[...$('subtitle').children].forEach((span,i)=>span.classList.toggle('current',i===state.sentence))}
   $('seek').value=String(state.time/state.duration*100);$('seek').setAttribute('aria-valuetext',formatTime(state.time)+' / '+formatTime(state.duration));$('time').textContent=formatTime(state.time)+' / '+formatTime(state.duration);
  }
  function stopPlayback(){
@@ -162,13 +169,16 @@
   const begin=()=>{window.speechSynthesis.resume();speakScene(state.index,voice,token)};
   if(state.paused)state.speechNext=begin;else begin();
  }
+ /* Bracketed English terms and Latin numerals help readers; a device voice should not say them twice.
+    A term that follows "that is" (یعنی/یعنې) is the spoken word, and بہتر reads as "better" without its numeral. */
+ function spokenText(text){return text.replace('بہتر (72)','۷۲').replace(/(?<!یعن[یې])\s+\([^)]*\)/gu,'')}
  function speakScene(index,voice,token,part=0){
   if(token!==state.token)return;if(index>=state.scenes.length)return end();
-  const scene=state.scenes[index],parts=scene.text.match(/[^.!?۔؟。！？]+[.!?۔؟。！？]*/gu)??[scene.text];
+  const scene=state.scenes[index],parts=scene.parts;
   if(part>=parts.length)return speakScene(index+1,voice,token);
   const offset=parts.slice(0,part).join('').length,sceneEnd=state.scenes[index+1]?.start??state.duration;
   state.time=scene.start+(sceneEnd-scene.start)*offset/scene.text.length;paint();
-  const utterance=new SpeechSynthesisUtterance(parts[part]);utterance.voice=voice;utterance.lang=voice.lang;utterance.rate=Number($('speed').value);utterance.volume=1;state.tts=utterance;let started=false;
+  const utterance=new SpeechSynthesisUtterance(spokenText(parts[part]));utterance.voice=voice;utterance.lang=voice.lang;utterance.rate=Number($('speed').value);utterance.volume=1;state.tts=utterance;let started=false;
   const current=()=>token===state.token&&state.tts===utterance;
   utterance.onstart=()=>{if(current()){started=true;clearTimeout(state.speechTimer);status('devicePlaying')}};
   utterance.onboundary=e=>{if(current()&&state.playing){state.time=scene.start+(sceneEnd-scene.start)*Math.min(.999,(offset+e.charIndex)/scene.text.length);paint()}};
@@ -193,6 +203,11 @@
  $('seek').oninput=e=>seek(Number(e.target.value)/100*state.duration);
  $('fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await $('exhibit').requestFullscreen()}catch{status('fullUnavailable')}};
  document.addEventListener('fullscreenchange',()=>label($('fullscreen'),document.fullscreenElement?'exitFullscreen':'present'));
+ /* Presenting on a wide screen: keep the controls beside the photograph rather than below the fold. */
+ document.addEventListener('fullscreenchange',()=>{const controls=[$('sceneNav'),document.querySelector('.playback'),$('playStatus')];if(document.fullscreenElement&&matchMedia('(min-width:901px)').matches)$('stageControls').append(...controls);else $('cinema').after(...controls)});
+ $('enlarge').onclick=()=>openLarge(state.scenes[state.index].photo,$('enlarge'));
+ /* Zoom keeps the clicked point in view; a keyboard press (no pointer) zooms to the centre. */
+ $('zoomPhoto').onclick=event=>{if($('zoomPhoto').classList.contains('zoomed'))return zoomLarge(false);const box=$('largePhoto').getBoundingClientRect(),x=event.detail?(event.clientX-box.left)/box.width:.5,y=event.detail?(event.clientY-box.top)/box.height:.5;zoomLarge(true);const large=$('largePhoto').getBoundingClientRect(),dialog=$('photoDialog'),frame=dialog.getBoundingClientRect();dialog.scrollBy(large.left+x*large.width-frame.left-dialog.clientWidth/2,large.top+y*large.height-frame.top-dialog.clientHeight/2)};
  $('closePhoto').onclick=()=>$('photoDialog').close();$('photoDialog').addEventListener('close',()=>galleryReturn?.focus());
  $('record').onclick=async()=>{
   if(!state.artifact||state.recording)return;stopPlayback();recordContext={id:state.artifact.id,lang:state.contentLang};state.recording=true;$('record').disabled=true;
